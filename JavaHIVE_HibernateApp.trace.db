@@ -1,0 +1,66 @@
+05-05 09:40:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "INDEKS" nie istnieje
+Table "INDEKS" not found; SQL statement:
+
+    alter table Indeks 
+        drop constraint FK_9ee9c2oq65ce65m7rjo2g5vdm [42102-173]
+05-05 09:40:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "OCENA" nie istnieje
+Table "OCENA" not found; SQL statement:
+
+    alter table Ocena 
+        drop constraint FK_qem0osg390wm3ijhpa9vhrapg [42102-173]
+05-05 09:40:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "OCENA" nie istnieje
+Table "OCENA" not found; SQL statement:
+
+    alter table Ocena 
+        drop constraint FK_1ka9flrokelap4d9vueksjjg9 [42102-173]
+05-05 09:40:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "STUDENT" nie istnieje
+Table "STUDENT" not found; SQL statement:
+
+    alter table Student 
+        drop constraint FK_1aw0oasvr2il022j2bv1nkx2j [42102-173]
+05-05 09:40:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "STUDENT_OCENA" nie istnieje
+Table "STUDENT_OCENA" not found; SQL statement:
+
+    alter table Student_Ocena 
+        drop constraint FK_esuco1nkoxl0yj0j90ef6fqf8 [42102-173]
+05-05 09:40:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "STUDENT_OCENA" nie istnieje
+Table "STUDENT_OCENA" not found; SQL statement:
+
+    alter table Student_Ocena 
+        drop constraint FK_60adx558u2hldw74h2q3k46lf [42102-173]
+05-08 11:43:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "WYKLAD" nie istnieje
+Table "WYKLAD" not found; SQL statement:
+
+    alter table Wyklad 
+        drop constraint FK_miqqbusm0bn5gmb8lrw0xeaal [42102-173]
+05-08 11:43:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "WYKLAD" nie istnieje
+Table "WYKLAD" not found; SQL statement:
+
+    alter table Wyklad 
+        drop constraint FK_3i6vjuxboedbtq5avxsvn3isj [42102-173]
+05-08 11:43:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "ZALICZENIE" nie istnieje
+Table "ZALICZENIE" not found; SQL statement:
+
+    alter table Zaliczenie 
+        drop constraint FK_sa7waxgbti60hg4tlrply2015 [42102-173]
+05-08 11:43:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "ZALICZENIE" nie istnieje
+Table "ZALICZENIE" not found; SQL statement:
+
+    alter table Zaliczenie 
+        drop constraint FK_8w882aoxlle618fobjib76ekt [42102-173]
+05-08 11:43:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tablela "ZALICZENIE" nie istnieje
+Table "ZALICZENIE" not found; SQL statement:
+
+    alter table Zaliczenie 
+        drop constraint FK_t7ubmubt1fe84bhbn0hy4e9kf [42102-173]

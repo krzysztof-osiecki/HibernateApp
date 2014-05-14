@@ -1,0 +1,75 @@
+- !package javahive.domain
+
+- !import h2_TestData/Oceny.yaml
+
+- Student(adam):
+    imie: Adam
+    nazwisko: Abramek
+    wieczny: false
+    indeks: Indeks(1)
+    
+- Student(adam1):
+    imie: Adam
+    nazwisko: Abramek1
+    wieczny: false
+    indeks: Indeks(2)
+    
+- Student(bartek):
+    imie: Bartek
+    nazwisko: Bielecki
+    wieczny: true
+    indeks: Indeks(10)
+
+- Student(cezary):
+    imie: Cezary
+    nazwisko: Cap
+    wieczny: false
+    indeks: Indeks(3)
+
+- Student(dariusz):
+    imie: Dariusz
+    nazwisko: Dziewulski
+    wieczny: false
+    indeks: Indeks(9)
+
+- Student(edward):
+    imie: Edward
+    nazwisko: Eklerek
+    wieczny: true
+    indeks: Indeks(4)
+
+- Student(filip):
+    imie: Filip
+    nazwisko: Fiflak
+    wieczny: true
+    indeks: Indeks(11)
+
+- Student(grzegorz):
+    imie: Grzegorz
+    nazwisko: Grabowski
+    wieczny: false
+    indeks: Indeks(8)
+
+- Student(henryk):
+    imie: Henryk
+    nazwisko: Heller
+    wieczny: false
+    indeks: Indeks(5)
+
+- Student(ireneusz):
+    imie: Ireneusz
+    nazwisko: Ikarus
+    wieczny: false
+    indeks: Indeks(7)
+
+- Student(jedrzej):
+    imie: Jędrzej
+    nazwisko: Jaworowski
+    wieczny: true
+    indeks: Indeks(6)
+    
+- Student(natan):
+    imie: Natan
+    nazwisko: Nowak
+    wieczny: false
+    indeks: Indeks(12)

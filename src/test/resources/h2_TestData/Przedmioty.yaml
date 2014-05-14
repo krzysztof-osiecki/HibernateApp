@@ -1,0 +1,18 @@
+- !package javahive.domain
+
+- !import h2_testData/Wyklady.yaml
+
+- Przedmiot(ASD):
+    nazwa: "Algorytmy i struktury danych"
+
+- Przedmiot(JOO):
+    nazwa: "Java - programowanie obiektowe"
+
+- Przedmiot(PRO):
+    nazwa: "Podstawy programowania"
+    
+- Przedmiot(GRA):
+    nazwa: "Grafika komputerowa"
+    
+- Przedmiot(ANA):
+    nazwa: "Analiza matematyczna"

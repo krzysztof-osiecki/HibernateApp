@@ -1,0 +1,241 @@
+- !package javahive.domain
+
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(1)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(2)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(3)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(4)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(5)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(2)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(6)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(7)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(8)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(2)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(9)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(10)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(11)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_ALG_KRZ):
+    indeks: Indeks(12)
+    wyklad: Wyklad(ALG_KRZ)
+    ocena: Ocena(2)
+    
+- Zaliczenie(ZAL_JAV_KUD):
+    indeks: Indeks(1)
+    wyklad: Wyklad(JAV_KUD)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_JAV_KUD):
+    indeks: Indeks(3)
+    wyklad: Wyklad(JAV_KUD)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_JAV_KUD):
+    indeks: Indeks(5)
+    wyklad: Wyklad(JAV_KUD)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_JAV_KUD):
+    indeks: Indeks(7)
+    wyklad: Wyklad(JAV_KUD)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_JAV_KUD):
+    indeks: Indeks(9)
+    wyklad: Wyklad(JAV_KUD)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_JAV_KUD):
+    indeks: Indeks(11)
+    wyklad: Wyklad(JAV_KUD)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_GRA_MIK):
+    indeks: Indeks(2)
+    wyklad: Wyklad(GRA_MIK)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_GRA_MIK):
+    indeks: Indeks(4)
+    wyklad: Wyklad(GRA_MIK)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_GRA_MIK):
+    indeks: Indeks(6)
+    wyklad: Wyklad(GRA_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_GRA_MIK):
+    indeks: Indeks(8)
+    wyklad: Wyklad(GRA_MIK)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_GRA_MIK):
+    indeks: Indeks(10)
+    wyklad: Wyklad(GRA_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_GRA_MIK):
+    indeks: Indeks(12)
+    wyklad: Wyklad(GRA_MIK)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(1)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(2)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(3)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(4)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(5)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(6)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(7)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(8)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(9)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(10)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(11)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_PRO_MIK):
+    indeks: Indeks(12)
+    wyklad: Wyklad(PRO_MIK)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ANA_KAC):
+    indeks: Indeks(1)
+    wyklad: Wyklad(ANA_KAC)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_ANA_KAC):
+    indeks: Indeks(2)
+    wyklad: Wyklad(ANA_KAC)
+    ocena: Ocena(2)
+    
+- Zaliczenie(ZAL_ANA_KAC):
+    indeks: Indeks(3)
+    wyklad: Wyklad(ANA_KAC)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_ANA_KAC):
+    indeks: Indeks(4)
+    wyklad: Wyklad(ANA_KAC)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ANA_KAC):
+    indeks: Indeks(5)
+    wyklad: Wyklad(ANA_KAC)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_ANA_KAC):
+    indeks: Indeks(6)
+    wyklad: Wyklad(ANA_KAC)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ANA_GOE):
+    indeks: Indeks(7)
+    wyklad: Wyklad(ANA_GOE)
+    ocena: Ocena(2)
+    
+- Zaliczenie(ZAL_ANA_GOE):
+    indeks: Indeks(8)
+    wyklad: Wyklad(ANA_GOE)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_ANA_GOE):
+    indeks: Indeks(9)
+    wyklad: Wyklad(ANA_GOE)
+    ocena: Ocena(4)
+    
+- Zaliczenie(ZAL_ANA_GOE):
+    indeks: Indeks(10)
+    wyklad: Wyklad(ANA_GOE)
+    ocena: Ocena(5)
+    
+- Zaliczenie(ZAL_ANA_GOE):
+    indeks: Indeks(11)
+    wyklad: Wyklad(ANA_GOE)
+    ocena: Ocena(3)
+    
+- Zaliczenie(ZAL_ANA_GOE):
+    indeks: Indeks(12)
+    wyklad: Wyklad(ANA_GOE)
+    ocena: Ocena(4)

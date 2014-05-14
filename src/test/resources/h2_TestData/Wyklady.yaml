@@ -1,0 +1,27 @@
+- !package javahive.domain
+
+- !import h2_testData/Zaliczenia.yaml
+
+- Wyklad(ALG_KRZ):
+    wykladowca: Wykladowca(KRZ)
+    przedmiot: Przedmiot(ASD)
+    
+- Wyklad(JAV_KUD):
+    wykladowca: Wykladowca(KUD)
+    przedmiot: Przedmiot(JAV)
+    
+- Wyklad(PRO_MIK):
+    wykladowca: Wykladowca(MIK)
+    przedmiot: Przedmiot(PRO)
+    
+- Wyklad(GRA_MIK):
+    wykladowca: Wykladowca(MIK)
+    przedmiot: Przedmiot(GRA)
+    
+- Wyklad(ANA_KAC):
+    wykladowca: Wykladowca(KAC)
+    przedmiot: Przedmiot(ANA)
+
+- Wyklad(ANA_GOE):
+    wykladowca: Wykladowca(GOE)
+    przedmiot: Przedmiot(ANA)

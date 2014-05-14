@@ -1,0 +1,40 @@
+- !package javahive.domain
+
+- !import h2_testData/Zaliczenia.yaml
+- !import h2_testData/Studenci.yaml
+
+- Indeks(1):
+    numer: "000001"
+
+- Indeks(2):
+    numer: "000002"
+
+- Indeks(3):
+    numer: "000003"
+
+- Indeks(4):
+    numer: "000004"
+
+- Indeks(5):
+    numer: "000005"
+
+- Indeks(6):
+    numer: "000006"
+
+- Indeks(7):
+    numer: "000007"
+
+- Indeks(8):
+    numer: "000008"
+
+- Indeks(9):
+    numer: "000009"
+
+- Indeks(10):
+    numer: "000010"
+
+- Indeks(11):
+    numer: "000011"
+
+- Indeks(12):
+    numer: "000012"
