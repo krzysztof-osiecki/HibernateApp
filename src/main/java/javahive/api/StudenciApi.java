@@ -1,6 +1,7 @@
 package javahive.api;
 
 import javahive.api.dto.*;
+import javahive.api.dto.StudentDTO.StudentDTOBuilder;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Zaliczenie;
@@ -27,14 +28,13 @@ public class StudenciApi {
     public List<StudentDTO> getListaWszystkichStudentow(){
         List studentciDTO=new ArrayList<StudentDTO>();
         for(Student student: finder.findAll(Student.class)){
-            StudentDTO studentDTO=new StudentDTO();
-            studentDTO.setImie(student.getImie());
-            studentDTO.setNazwisko(student.getNazwisko());
-            studentDTO.setWieczny(student.isWieczny());
-            studentDTO.setId(student.getId());
-            if(student.getIndeks()!=null){
-                studentDTO.setNumerIndeksu(student.getIndeks().getNumer());
-            }
+            StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+            .imie(student.getImie())
+            .nazwisko(student.getNazwisko())
+            .wieczny(student.isWieczny())
+            .indeks(student.getIndeks())
+            .id(student.getId())
+            .buduj();
             studentciDTO.add(studentDTO);
         }
         return studentciDTO;
@@ -46,8 +46,15 @@ public class StudenciApi {
     }
     
     public StudentDTO getStudent(int studentId){
-        //TODO public StudentDTO getStudent(int studentId){
-        return null;
+    	Student student=finder.findStudentWithID(studentId);
+        StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+        .imie(student.getImie())
+        .nazwisko(student.getNazwisko())
+        .wieczny(student.isWieczny())
+        .indeks(student.getIndeks())
+        .id(student.getId())
+        .buduj();
+        return studentDTO;
     }
     
     public List<StudentDTO> znajdzStudentow(String imie, String nazwisko, String nimerIndeksu){

@@ -63,6 +63,7 @@ public class Student extends BaseEntity {
     	this.wieczny = studentBuilder.wieczny;
     }
     
+    
     public static class StudentBuilder {
     	private String imie;
     	private String nazwisko;
