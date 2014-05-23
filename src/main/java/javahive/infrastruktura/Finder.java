@@ -3,6 +3,7 @@ package javahive.infrastruktura;
 import java.util.List;
 
 import javahive.api.dto.StudentDTO;
+import javahive.domain.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,12 +32,12 @@ public class Finder{
 		return entities;
 	}
 	
-	public StudentDTO findStudentWithID(int id)
+	public Student findStudentWithID(int id)
 	{
 		String queryString = "SELECT * FROM Student WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", String.valueOf(id));
-		return (StudentDTO) query.list();
+		return (Student) query.list();
 	}
 	
 	
