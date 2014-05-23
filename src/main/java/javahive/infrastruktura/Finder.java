@@ -40,5 +40,12 @@ public class Finder{
 		return (Student) query.list();
 	}
 	
+	public boolean deleteStudentWithID(int id)
+	{
+		String queryString = "DELETE FROM Student WHERE s.id = :id";
+		query = (Query) entityManager.createQuery(queryString);
+		query.setParameter("id", String.valueOf(id));
+		return true;
+	}
 	
 }

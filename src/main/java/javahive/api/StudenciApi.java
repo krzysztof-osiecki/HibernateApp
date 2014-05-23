@@ -62,8 +62,7 @@ public class StudenciApi {
     }
     
     public boolean usunStudenta(int studentId){
-        //TODO public boolean usunStudenta(int studentId){
-        return false;
+        return finder.deleteStudentWithID(studentId);
     }
     
     //@RequestMapping...
