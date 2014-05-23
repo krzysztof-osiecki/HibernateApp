@@ -2,12 +2,15 @@ package javahive.infrastruktura;
 
 import java.util.List;
 
+import javahive.api.dto.StudentDTO;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +18,7 @@ public class Finder{
 	
 	@PersistenceContext
 	public EntityManager entityManager;
+	private Query query;
 	
 	public Finder(){}
 	
@@ -25,6 +29,14 @@ public class Finder{
 		criteria.select(entityRoot);
 		List<T> entities = entityManager.createQuery( criteria ).getResultList();
 		return entities;
+	}
+	
+	public StudentDTO findStudentWithID(int id)
+	{
+		String queryString = "SELECT * FROM Student WHERE s.id = :id";
+		query = (Query) entityManager.createQuery(queryString);
+		query.setParameter("id", String.valueOf(id));
+		return (StudentDTO) query.list();
 	}
 	
 	
