@@ -1,20 +1,19 @@
 package javahive.api;
 
-import javahive.api.dto.*;
-import javahive.api.dto.StudentDTO.StudentDTOBuilder;
+import java.util.ArrayList;
+import java.util.List;
+
+import javahive.api.dto.StudentDTO;
+import javahive.api.dto.WykladDTO;
+import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Student;
-import javahive.domain.Wyklad;
-import javahive.domain.Zaliczenie;
 import javahive.infrastruktura.Finder;
+
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.inject.Inject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by m on 29.04.14.

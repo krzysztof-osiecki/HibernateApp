@@ -7,8 +7,6 @@ import lombok.ToString;
 import java.io.Serializable;
 
 import javahive.domain.Indeks;
-import javahive.domain.Student;
-import javahive.domain.Student.StudentBuilder;
 
 /**
  * Created by m on 29.04.14.
