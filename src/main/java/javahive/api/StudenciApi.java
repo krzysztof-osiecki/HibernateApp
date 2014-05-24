@@ -56,9 +56,50 @@ public class StudenciApi {
         return studentDTO;
     }
     
-    public List<StudentDTO> znajdzStudentow(String imie, String nazwisko, String nimerIndeksu){
-        //TODO public List<StudentDTO> znajdzStudentow(String imie, String nazwisko, String nimerIndeksu){
-        return null;
+    public List<StudentDTO> znajdzStudentow(String imie, String nazwisko){
+        List studenciDTO=new ArrayList<StudentDTO>();
+        for(Student student: finder.findStudentsWithFullName(imie, nazwisko)){
+        	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+            .imie(student.getImie())
+            .nazwisko(student.getNazwisko())
+            .wieczny(student.isWieczny())
+            .indeks(student.getIndeks())
+            .id(student.getId())
+            .buduj();
+            studenciDTO.add(studentDTO);
+        }
+        return studenciDTO;
+    }
+    
+    public List<StudentDTO> znajdzStudentow(String param, int wariant){
+    	List studenciDTO=new ArrayList<StudentDTO>();
+    	if(wariant==0)	//param==imie
+    	{
+            for(Student student: finder.findStudentsWithName(param)){
+            	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+                .imie(student.getImie())
+                .nazwisko(student.getNazwisko())
+                .wieczny(student.isWieczny())
+                .indeks(student.getIndeks())
+                .id(student.getId())
+                .buduj();
+                studenciDTO.add(studentDTO);
+            }
+    	}
+    	else	//param==nazwisko
+    	{
+            for(Student student: finder.findStudentsWithLastName(param)){
+            	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+                .imie(student.getImie())
+                .nazwisko(student.getNazwisko())
+                .wieczny(student.isWieczny())
+                .indeks(student.getIndeks())
+                .id(student.getId())
+                .buduj();
+                studenciDTO.add(studentDTO);
+            }
+    	}
+    	return  studenciDTO;
     }
     
     public boolean usunStudenta(int studentId){
