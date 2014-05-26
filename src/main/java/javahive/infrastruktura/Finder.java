@@ -3,6 +3,8 @@ package javahive.infrastruktura;
 import java.util.List;
 
 import javahive.api.dto.StudentDTO;
+import javahive.api.dto.WykladDTO;
+import javahive.domain.Wyklad;
 import javahive.domain.Student;
 
 import javax.persistence.EntityManager;

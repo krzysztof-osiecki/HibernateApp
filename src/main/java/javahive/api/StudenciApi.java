@@ -7,6 +7,7 @@ import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
 import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Student;
+import javahive.domain.Wyklad;
 import javahive.infrastruktura.Finder;
 
 import javax.inject.Inject;
@@ -119,7 +120,6 @@ public class StudenciApi {
     
     //Dodatkowa funkcjonalnosc
     public List<WykladDTO> pobierzWyklady(){
-        //TODO public List<WykladDTO> pobierzWyklady(){
         return null;
     }
     
