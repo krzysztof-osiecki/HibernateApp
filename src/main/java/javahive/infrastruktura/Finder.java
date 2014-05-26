@@ -6,6 +6,7 @@ import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
 import javahive.domain.Wyklad;
 import javahive.domain.Student;
+import javahive.domain.Zaliczenie;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -75,4 +76,11 @@ public class Finder{
 		return true;
 	}
 	
+	public List<Zaliczenie> findCreditsOfStudent(int id)
+	{
+		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
+		query = (Query) entityManager.createQuery(queryString);
+		query.setParameter("id", String.valueOf(id)); 
+		return ((List<Zaliczenie>) query.list());
+	}
 }

@@ -8,7 +8,9 @@ public class ZaliczenieDTO {
     private String przedmiot;
     private String wykladowca;
     private ZaliczenieDTO(ZaliczenieDTOBuilder zaliczenieDTOBuilder){
-    	;
+    	this.ocena = zaliczenieDTOBuilder.ocena;
+    	this.przedmiot = zaliczenieDTOBuilder.przedmiot;
+    	this.wykladowca = zaliczenieDTOBuilder.wykladowca;
     }
     
     public static class ZaliczenieDTOBuilder {
@@ -35,7 +37,7 @@ public class ZaliczenieDTO {
     		return this;
     	}
     	
-    	public ZaliczenieDTO build(){
+    	public ZaliczenieDTO buduj(){
     		return new ZaliczenieDTO(this);
     	}
     }

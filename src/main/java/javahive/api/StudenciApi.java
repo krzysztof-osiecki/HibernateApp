@@ -8,6 +8,7 @@ import javahive.api.dto.WykladDTO;
 import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
+import javahive.domain.Zaliczenie;
 import javahive.infrastruktura.Finder;
 
 import javax.inject.Inject;
@@ -114,8 +115,15 @@ public class StudenciApi {
     }
     
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId){
-        //TODO public List<ZaliczenieDTO> pobierzZaliczenia(int studentId){
-        return null;
+        List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
+        for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)){
+        	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
+        	.ocena(zaliczenie.getOcena())
+        	.wyklad(zaliczenie.getWyklad())
+            .buduj();
+            zaliczeniaDTO.add(zaliczenieDTO);
+        }
+        return zaliczeniaDTO;
     }
     
     //Dodatkowa funkcjonalnosc
