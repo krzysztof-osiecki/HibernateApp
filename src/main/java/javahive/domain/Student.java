@@ -55,8 +55,7 @@ public class Student extends BaseEntity {
     @OneToOne//(mappedBy="student",fetch=FetchType.EAGER)
     @JoinColumn(name = "indeks_id",referencedColumnName="id")
     private Indeks indeks;
-    private Student(StudentBuilder studentBuilder)
-    {
+    private Student(StudentBuilder studentBuilder) {
     	this.imie = studentBuilder.imie;
     	this.nazwisko = studentBuilder.nazwisko;
     	this.indeks = studentBuilder.indeks;
@@ -70,43 +69,33 @@ public class Student extends BaseEntity {
         private Indeks indeks;
     	private boolean wieczny;
     	
-    	public StudentBuilder(){
+    	public StudentBuilder() {
     	}
     	
-    	public StudentBuilder imie(String imie){
+    	public StudentBuilder imie(String imie) {
     		this.imie = imie;
     		return this;
     	}
     	
-    	public StudentBuilder nazwisko(String nazwisko){
+    	public StudentBuilder nazwisko(String nazwisko) {
     		this.nazwisko = nazwisko;
     		return this;
     	}
     	
-    	public StudentBuilder indeks(Indeks  indeks){
+    	public StudentBuilder indeks(Indeks  indeks) {
     		this.indeks = indeks;
     		return this;
     	}
     	
-    	public StudentBuilder wieczny(boolean wieczny){
+    	public StudentBuilder wieczny(boolean wieczny) {
     		this.wieczny = wieczny;
     		return this;
     	}
     	
-    	public Student buduj(){
+    	public Student buduj() {
     		return new Student(this);
     	}
     	
-    	/*
-    	 * Przykladowe stworzenie obiektu User.UserBuilder().imie("Kamil").build();
-    	 * badz z pelnym wykorzystaniem: 
-    	 * User.UserBuilder()
-    	 * .imie("Kamil")
-    	 * .nazwisko("Kajak")
-    	 * .indeks(index)
-    	 * .wieczny(true)
-    	 * .build();
-    	 */
     }
 }
 /*

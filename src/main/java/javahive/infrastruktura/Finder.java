@@ -26,7 +26,7 @@ public class Finder{
 	
 	public Finder(){}
 	
-	public <T> List<T> findAll(Class <T> c){
+	public <T> List<T> findAll(Class <T> c) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<T> criteria = builder.createQuery(c);
 		Root<T> entityRoot = criteria.from(c);
@@ -35,24 +35,21 @@ public class Finder{
 		return entities;
 	}
 	
-	public List<Student> findStudentsWithName(String name)
-	{
+	public List<Student> findStudentsWithName(String name) {
 		String queryString = "SELECT * FROM Student WHERE s.imie = name";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("imie", name); 
 		return ((List<Student>) query.list());
 	}
 	
-	public List<Student> findStudentsWithLastName(String lastName)
-	{
+	public List<Student> findStudentsWithLastName(String lastName) {
 		String queryString = "SELECT * FROM Student WHERE s.nazwisko = lastName";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("nazwisko", lastName); 
 		return ((List<Student>) query.list());
 	}
 	
-	public List<Student> findStudentsWithFullName(String name, String lastName)
-	{
+	public List<Student> findStudentsWithFullName(String name, String lastName) {
 		String queryString = "SELECT * FROM Student WHERE s.nazwisko = lastName AND s.imie = name";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("nazwisko", lastName); 
@@ -60,24 +57,21 @@ public class Finder{
 		return ((List<Student>) query.list());
 	}
 	
-	public Student findStudentWithID(int id)
-	{
+	public Student findStudentWithID(int id) {
 		String queryString = "SELECT * FROM Student WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", String.valueOf(id));
 		return (Student) query.list();
 	}
 	
-	public boolean deleteStudentWithID(int id)
-	{
+	public boolean deleteStudentWithID(int id) {
 		String queryString = "DELETE FROM Student WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", String.valueOf(id));
 		return true;
 	}
 	
-	public List<Zaliczenie> findCreditsOfStudent(int id)
-	{
+	public List<Zaliczenie> findCreditsOfStudent(int id) {
 		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", String.valueOf(id)); 

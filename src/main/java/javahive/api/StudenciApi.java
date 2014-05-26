@@ -26,9 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class StudenciApi {
     @Inject
     private Finder finder;
-    public List<StudentDTO> getListaWszystkichStudentow(){
+    public List<StudentDTO> getListaWszystkichStudentow() {
         List studentciDTO=new ArrayList<StudentDTO>();
-        for(Student student: finder.findAll(Student.class)){
+        for(Student student: finder.findAll(Student.class)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
             .nazwisko(student.getNazwisko())
@@ -42,11 +42,11 @@ public class StudenciApi {
     }
 
 
-    public int getLiczbaStudentow(){
+    public int getLiczbaStudentow() {
         return finder.findAll(Student.class).size();
     }
     
-    public StudentDTO getStudent(int studentId){
+    public StudentDTO getStudent(int studentId) {
     	Student student=finder.findStudentWithID(studentId);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
@@ -58,9 +58,9 @@ public class StudenciApi {
         return studentDTO;
     }
     
-    public List<StudentDTO> znajdzStudentow(String imie, String nazwisko){
+    public List<StudentDTO> znajdzStudentow(String imie, String nazwisko) {
         List studenciDTO=new ArrayList<StudentDTO>();
-        for(Student student: finder.findStudentsWithFullName(imie, nazwisko)){
+        for(Student student: finder.findStudentsWithFullName(imie, nazwisko)) {
         	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
             .nazwisko(student.getNazwisko())
@@ -73,11 +73,11 @@ public class StudenciApi {
         return studenciDTO;
     }
     
-    public List<StudentDTO> znajdzStudentow(String param, int wariant){
+    public List<StudentDTO> znajdzStudentow(String param, int wariant) {
     	List studenciDTO=new ArrayList<StudentDTO>();
     	if(wariant==0)	//param==imie
     	{
-            for(Student student: finder.findStudentsWithName(param)){
+            for(Student student: finder.findStudentsWithName(param)) {
             	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
                 .imie(student.getImie())
                 .nazwisko(student.getNazwisko())
@@ -90,7 +90,7 @@ public class StudenciApi {
     	}
     	else	//param==nazwisko
     	{
-            for(Student student: finder.findStudentsWithLastName(param)){
+            for(Student student: finder.findStudentsWithLastName(param)) {
             	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
                 .imie(student.getImie())
                 .nazwisko(student.getNazwisko())
@@ -104,19 +104,19 @@ public class StudenciApi {
     	return  studenciDTO;
     }
     
-    public boolean usunStudenta(int studentId){
+    public boolean usunStudenta(int studentId) {
         return finder.deleteStudentWithID(studentId);
     }
     
     //@RequestMapping...
-    public boolean wystawOcene(int studentId, int zaliczenieId){
+    public boolean wystawOcene(int studentId, int zaliczenieId) {
         //TODO public boolean wystawOcene(int studentId, int zaliczenieId){
         return false;
     }
     
-    public List<ZaliczenieDTO> pobierzZaliczenia(int studentId){
+    public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
         List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
-        for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)){
+        for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)) {
         	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
         	.ocena(zaliczenie.getOcena())
         	.wyklad(zaliczenie.getWyklad())
@@ -127,11 +127,12 @@ public class StudenciApi {
     }
     
     //Dodatkowa funkcjonalnosc
-    public List<WykladDTO> pobierzWyklady(){
+    public List<WykladDTO> pobierzWyklady() {
+    	//TODO
         return null;
     }
     
-    public StudentDTO przywrocStudenta(int studentId){
+    public StudentDTO przywrocStudenta(int studentId) {
         //TODO public StudentDTO przywrocStudenta(int studentId){
         return null;
     }

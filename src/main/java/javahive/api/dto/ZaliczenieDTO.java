@@ -7,7 +7,7 @@ public class ZaliczenieDTO {
     private String ocena;
     private String przedmiot;
     private String wykladowca;
-    private ZaliczenieDTO(ZaliczenieDTOBuilder zaliczenieDTOBuilder){
+    private ZaliczenieDTO(ZaliczenieDTOBuilder zaliczenieDTOBuilder) {
     	this.ocena = zaliczenieDTOBuilder.ocena;
     	this.przedmiot = zaliczenieDTOBuilder.przedmiot;
     	this.wykladowca = zaliczenieDTOBuilder.wykladowca;
@@ -17,15 +17,15 @@ public class ZaliczenieDTO {
         private String ocena;
         private String przedmiot;
         private String wykladowca;
-    	public ZaliczenieDTOBuilder(){
+    	public ZaliczenieDTOBuilder() {
     	}
     	
-    	public ZaliczenieDTOBuilder ocena(Ocena ocena){
+    	public ZaliczenieDTOBuilder ocena(Ocena ocena) {
     		this.ocena=ocena.getWysokosc();
     		return this;
     	}
     	
-    	public ZaliczenieDTOBuilder wyklad(Wyklad wyklad){
+    	public ZaliczenieDTOBuilder wyklad(Wyklad wyklad) {
     		this.przedmiot=wyklad.getPrzedmiot().getNazwa();
     		StringBuilder stringBuilder=new StringBuilder()
     		.append(wyklad.getWykladowca().getStopien())
@@ -37,7 +37,7 @@ public class ZaliczenieDTO {
     		return this;
     	}
     	
-    	public ZaliczenieDTO buduj(){
+    	public ZaliczenieDTO buduj() {
     		return new ZaliczenieDTO(this);
     	}
     }
