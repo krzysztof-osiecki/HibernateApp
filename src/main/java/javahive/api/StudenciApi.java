@@ -40,13 +40,26 @@ public class StudenciApi {
         }
         return studentciDTO;
     }
+    
+    //Dodatkowa funkcjonalnosc
+    public List<WykladDTO> getListaWszystkichWykladow() {
+        List wykladyDTO=new ArrayList<WykladDTO>();
+        for(Wyklad wyklad: finder.findAll(Wyklad.class)) {
+            WykladDTO wykladDTO= new WykladDTO.WykladDTOBuilder()
+            .wykladowca(wyklad.getWykladowca())
+            .przedmiot(wyklad.getPrzedmiot())
+            .build();
+            wykladyDTO.add(wykladDTO);
+        }
+        return wykladyDTO;
+    }
 
 
     public int getLiczbaStudentow() {
         return finder.findAll(Student.class).size();
     }
     
-    public StudentDTO getStudent(int studentId) {
+    public StudentDTO znajdzStudenta(int studentId) {
     	Student student=finder.findStudentWithID(studentId);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
@@ -108,12 +121,6 @@ public class StudenciApi {
         return finder.deleteStudentWithID(studentId);
     }
     
-    //@RequestMapping...
-    public boolean wystawOcene(int studentId, int zaliczenieId) {
-        //TODO public boolean wystawOcene(int studentId, int zaliczenieId){
-        return false;
-    }
-    
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
         List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
         for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)) {
@@ -126,10 +133,9 @@ public class StudenciApi {
         return zaliczeniaDTO;
     }
     
-    //Dodatkowa funkcjonalnosc
-    public List<WykladDTO> pobierzWyklady() {
-    	//TODO
-        return null;
+    public boolean wystawOcene(int studentId, int zaliczenieId) {
+        //TODO public boolean wystawOcene(int studentId, int zaliczenieId){
+        return false;
     }
     
     public StudentDTO przywrocStudenta(int studentId) {
