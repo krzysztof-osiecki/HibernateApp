@@ -10,6 +10,7 @@ import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Zaliczenie;
+import javahive.infrastruktura.Finder;
 
 import javax.inject.Inject;
 
