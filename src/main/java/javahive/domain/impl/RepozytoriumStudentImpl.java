@@ -75,7 +75,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 	public List<Student> getStudenciPoNazwisku_CRITERIA(String nazwisko) {
 		Session session=entityManager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Student.class);
-		//criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
+		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
 		criteria.add(Restrictions.eq("nazwisko",nazwisko));//.toLowerCase()));
 		//criteria.setProjection(Projections.distinct(Projections.property("id")));
 		//return session.createCriteria(nu).uniqueResult();
