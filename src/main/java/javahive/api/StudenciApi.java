@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javahive.api.dto.StudentDTO;
+import javahive.api.dto.StudentDTOMementoCaretaker;
 import javahive.api.dto.WykladDTO;
 import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Student;
@@ -26,6 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class StudenciApi {
     @Inject
     private Finder finder;
+    @Inject
+    private StudentDTOMementoCaretaker mementoCaretaker;
     public List<StudentDTO> getListaWszystkichStudentow() {
         List studentciDTO=new ArrayList<StudentDTO>();
         for(Student student: finder.findAll(Student.class)) {
@@ -36,6 +39,7 @@ public class StudenciApi {
             .indeks(student.getIndeks())
             .id(student.getId())
             .buduj();
+            mementoCaretaker.setMemento(studentDTO.createMemento());
             studentciDTO.add(studentDTO);
         }
         return studentciDTO;
@@ -68,6 +72,7 @@ public class StudenciApi {
         .indeks(student.getIndeks())
         .id(student.getId())
         .buduj();
+        mementoCaretaker.setMemento(studentDTO.createMemento());
         return studentDTO;
     }
     
@@ -82,6 +87,7 @@ public class StudenciApi {
             .id(student.getId())
             .buduj();
             studenciDTO.add(studentDTO);
+            mementoCaretaker.setMemento(studentDTO.createMemento());
         }
         return studenciDTO;
     }
@@ -98,6 +104,7 @@ public class StudenciApi {
                 .indeks(student.getIndeks())
                 .id(student.getId())
                 .buduj();
+                mementoCaretaker.setMemento(studentDTO.createMemento());
                 studenciDTO.add(studentDTO);
             }
     	}
@@ -111,6 +118,7 @@ public class StudenciApi {
                 .indeks(student.getIndeks())
                 .id(student.getId())
                 .buduj();
+                mementoCaretaker.setMemento(studentDTO.createMemento());
                 studenciDTO.add(studentDTO);
             }
     	}
@@ -138,9 +146,8 @@ public class StudenciApi {
         return false;
     }
     
-    public StudentDTO przywrocStudenta(int studentId) {
-        //TODO public StudentDTO przywrocStudenta(int studentId){
-        return null;
+    public StudentDTO przywrocStudenta(String indexNumber) {
+        return new StudentDTO(mementoCaretaker.getMementoOfStudent(indexNumber));
     }
 
 }
