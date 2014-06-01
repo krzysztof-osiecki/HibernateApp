@@ -61,7 +61,7 @@ public class Finder{
 	}
 	
 	public Student findStudentWithIndexNumber(String indexNumber) {
-		String queryString = "SELECT s FROM Student s WHERE s.id = :id";
+		String queryString = "SELECT s FROM Student s WHERE s.index_id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", indexNumber);
 		return (Student) query.getResultList();
