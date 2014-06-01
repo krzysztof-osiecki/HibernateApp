@@ -95,17 +95,6 @@ public class Student extends BaseEntity {
     	public Student buduj() {
     		return new Student(this);
     	}
-    	
-    }
-    
-    public static class StudentMemento {
-    	private String imie;
-    	private String nazwisko;
-        private Indeks indeks;
-    	private boolean wieczny;
-    	public void zapamietaj(){
-    		
-    	}
     }
 }
 /*
