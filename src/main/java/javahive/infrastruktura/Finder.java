@@ -10,11 +10,11 @@ import javahive.domain.Zaliczenie;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -35,33 +35,36 @@ public class Finder{
 		return entities;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsWithName(String name) {
 		String queryString = "SELECT * FROM Student WHERE s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("name", name); 
-		return ((List<Student>) query.list());
+		return ((List<Student>) query.getResultList());
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsWithLastName(String lastName) {
 		String queryString = "SELECT * FROM Student WHERE s.nazwisko = :lastName";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("lastName", lastName); 
-		return ((List<Student>) query.list());
+		return ((List<Student>) query.getResultList());
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsWithFullName(String name, String lastName) {
 		String queryString = "SELECT * FROM Student WHERE s.nazwisko = :lastName AND s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("lastName", lastName); 
 		query.setParameter("name", name);
-		return ((List<Student>) query.list());
+		return ((List<Student>) query.getResultList());
 	}
 	
 	public Student findStudentWithID(int id) {
 		String queryString = "SELECT * FROM Student WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", String.valueOf(id));
-		return (Student) query.list();
+		return (Student) query.getResultList();
 	}
 	
 	public boolean deleteStudentWithID(int id) {
@@ -71,25 +74,11 @@ public class Finder{
 		return true;
 	}
 	
-    public List<Zaliczenie> findCreditsOfStudent(int id) {
-        //String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";     
-        //query = (Query) entityManager.createQuery(queryString);
-        //query.setParameter("id", String.valueOf(id)); 
-        //return ((List<Zaliczenie>) query.list());
-        Session session=entityManager.unwrap(Session.class);
-        String queryString = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
-                "WHERE s.id = :id";
-        
-        javax.persistence.Query query = entityManager.createQuery(queryString);
-        System.out.println("wybor: "+id);
-        query.setParameter("id", id);
-        
-        List<Zaliczenie> t = query.getResultList();
-        for(Zaliczenie z:t){
-            System.out.println(z.getWyklad().getPrzedmiot().getNazwa());
-        }
-        
-        return (List<Zaliczenie>)query.getResultList();
-        //return castList(Zaliczenie.class, query.getResultList());
-    }
+	@SuppressWarnings("unchecked")
+	public List<Zaliczenie> findCreditsOfStudent(int id) {
+		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
+		query = (Query) entityManager.createQuery(queryString);
+		query.setParameter("id", String.valueOf(id)); 
+		return ((List<Zaliczenie>) query.getResultList());
+	}
 }
