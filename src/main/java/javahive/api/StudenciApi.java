@@ -10,7 +10,6 @@ import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Zaliczenie;
-import javahive.infrastruktura.Finder;
 
 import javax.inject.Inject;
 
@@ -27,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class StudenciApi {
     @Inject
     private Finder finder;
+    @Inject
     private StudentDTOMementoCaretaker mementoCaretaker;
     public List<StudentDTO> getListaWszystkichStudentow() {
         List studentciDTO=new ArrayList<StudentDTO>();
