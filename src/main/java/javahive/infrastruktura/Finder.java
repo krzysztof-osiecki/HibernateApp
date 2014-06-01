@@ -75,19 +75,36 @@ public class Finder{
 		return true;
 	}
 	
-	/*@SuppressWarnings("unchecked")
-	public List<Zaliczenie> findCreditsOfStudent(int id) {
-		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
-		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("id", String.valueOf(id)); 
-		return ((List<Zaliczenie>) query.getResultList());
-	}*/
+	public boolean setPersonalData(int id, String name, String lastName)
+	{
+		String queryString = "UPDATE Student s SET s.imie = :name, s.nazwisko = :lastName"
+				+ "WHERE s.id = :id";
+		query = entityManager.createQuery(queryString);
+		query.setParameter("name", name);
+		query.setParameter("lastName", lastName);
+		query.setParameter("id", id);
+		query.executeUpdate();
+		return true;
+	}
+	
+	public boolean setCreditGrade(String indexStudenta, int idZaliczenia, int ocena)
+	{
+		String queryString = "UPDATE Zaliczenie z SET z.ocena = :ocena"
+				+ "WHERE z.indeks = :indexStudenta AND z.id = :idZaliczenia";
+		query = entityManager.createQuery(queryString);
+		query.setParameter("ocena", ocena);
+		query.setParameter("indexStudenta", indexStudenta);
+		query.setParameter("idZaliczenia", idZaliczenia);
+		query.executeUpdate();
+		return true;
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Zaliczenie> findCreditsOfStudent(int id) {
-	    String queryString2 = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
+	    String queryString = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
                 "WHERE s.id = :id";
-        query = entityManager.createQuery(queryString2);
+        query = entityManager.createQuery(queryString);
         query.setParameter("id", id);
         return (List<Zaliczenie>)query.getResultList();
     }

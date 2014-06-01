@@ -133,10 +133,14 @@ public class StudenciApi {
         return zaliczeniaDTO;
     }
     
-    public boolean wystawOcene(int studentId, int zaliczenieId) {
-        //TODO public boolean wystawOcene(int studentId, int zaliczenieId){
-        return false;
+    public boolean edytujDaneStudenta(int studentId, String imie, String nazwisko) {
+        return finder.setPersonalData(studentId, imie, nazwisko);
     }
+    
+   public boolean wystawOcene(String nrIndexu, int idZaliczenia, int ocena)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
+   {
+	   return finder.setCreditGrade(nrIndexu, idZaliczenia, ocena);
+   }
     
     public StudentDTO przywrocStudenta(int studentId) {
         //TODO public StudentDTO przywrocStudenta(int studentId){
