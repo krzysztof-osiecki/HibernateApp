@@ -37,7 +37,7 @@ public class Finder{
 	
 	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsWithName(String name) {
-		String queryString = "SELECT * FROM Student WHERE s.imie = :name";
+		String queryString = "SELECT s FROM Student s WHERE s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("name", name); 
 		return ((List<Student>) query.getResultList());
@@ -45,7 +45,7 @@ public class Finder{
 	
 	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsWithLastName(String lastName) {
-		String queryString = "SELECT * FROM Student WHERE s.nazwisko = :lastName";
+		String queryString = "SELECT s FROM Student s WHERE s.nazwisko = :lastName";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("lastName", lastName); 
 		return ((List<Student>) query.getResultList());
@@ -53,24 +53,24 @@ public class Finder{
 	
 	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsWithFullName(String name, String lastName) {
-		String queryString = "SELECT * FROM Student WHERE s.nazwisko = :lastName AND s.imie = :name";
+		String queryString = "SELECT s FROM Student s WHERE s.nazwisko = :lastName AND s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("lastName", lastName); 
 		query.setParameter("name", name);
 		return ((List<Student>) query.getResultList());
 	}
 	
-	public Student findStudentWithID(int id) {
-		String queryString = "SELECT * FROM Student WHERE s.id = :id";
+	public Student findStudentWithIndexNumber(String indexNumber) {
+		String queryString = "SELECT s FROM Student s WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("id", String.valueOf(id));
+		query.setParameter("id", indexNumber);
 		return (Student) query.getResultList();
 	}
 	
-	public boolean deleteStudentWithID(int id) {
-		String queryString = "DELETE FROM Student WHERE s.id = :id";
+	public boolean deleteStudentWithIndexNumber(String indexNumber) {
+		String queryString = "DELETE FROM Student s WHERE s.indeks_id = :id";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("id", String.valueOf(id));
+		query.setParameter("id", indexNumber);
 		return true;
 	}
 	
@@ -82,10 +82,11 @@ public class Finder{
 		return ((List<Zaliczenie>) query.getResultList());
 	}*/
 	
+	@SuppressWarnings("unchecked")
 	public List<Zaliczenie> findCreditsOfStudent(int id) {
 	    String queryString2 = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
                 "WHERE s.id = :id";
-        javax.persistence.Query query = entityManager.createQuery(queryString2);
+        query = entityManager.createQuery(queryString2);
         query.setParameter("id", id);
         return (List<Zaliczenie>)query.getResultList();
     }

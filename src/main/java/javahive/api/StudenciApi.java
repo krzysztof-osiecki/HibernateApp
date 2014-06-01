@@ -59,8 +59,8 @@ public class StudenciApi {
         return finder.findAll(Student.class).size();
     }
     
-    public StudentDTO znajdzStudenta(int studentId) {
-    	Student student=finder.findStudentWithID(studentId);
+    public StudentDTO znajdzStudenta(String indexNumber) {
+    	Student student=finder.findStudentWithIndexNumber(indexNumber);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
         .nazwisko(student.getNazwisko())
@@ -117,8 +117,8 @@ public class StudenciApi {
     	return  studenciDTO;
     }
     
-    public boolean usunStudenta(int studentId) {
-        return finder.deleteStudentWithID(studentId);
+    public boolean usunStudenta(String indexNumber) {
+        return finder.deleteStudentWithIndexNumber(indexNumber);
     }
     
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
