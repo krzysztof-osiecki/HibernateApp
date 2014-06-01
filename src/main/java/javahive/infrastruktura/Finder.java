@@ -67,10 +67,11 @@ public class Finder{
 		return (Student) query.getResultList();
 	}
 	
-	public boolean deleteStudentWithIndexNumber(String indexNumber) {
-		String queryString = "DELETE FROM Student s WHERE s.indeks_id = :id";
+	public boolean deleteStudentWithIndexNumber(int id) {
+		String queryString = "DELETE FROM Student s WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("id", indexNumber);
+		query.setParameter("id", id);
+		query.executeUpdate();
 		return true;
 	}
 	

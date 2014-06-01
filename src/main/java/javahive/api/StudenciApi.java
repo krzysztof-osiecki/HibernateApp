@@ -117,8 +117,8 @@ public class StudenciApi {
     	return  studenciDTO;
     }
     
-    public boolean usunStudenta(String indexNumber) {
-        return finder.deleteStudentWithIndexNumber(indexNumber);
+    public boolean usunStudenta(int id) {
+        return finder.deleteStudentWithIndexNumber(id);
     }
     
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
