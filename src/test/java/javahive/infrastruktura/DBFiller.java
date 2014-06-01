@@ -31,6 +31,7 @@ public class DBFiller implements ApplicationContextAware{
 		transaction.begin();
 		Fixy fixtures = new JpaFixyBuilder(entityManager).withDefaultPackage("h2_TestData").useFieldAccess().build();
 		fixtures.load("h2_TestData/Studenci.yaml");
+		fixtures.load("h2_TestData/Wykladowcy.yaml");
 		fixtures.load("h2_TestData/Przedmioty.yaml");
 		fixtures.load("h2_TestData/Oceny.yaml");
         fixtures.load("h2_TestData/Indeksy.yaml");
