@@ -83,27 +83,11 @@ public class Finder{
 	}*/
 	
 	public List<Zaliczenie> findCreditsOfStudent(int id) {
-        //String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";     
-        //query = (Query) entityManager.createQuery(queryString);
-        //query.setParameter("id", String.valueOf(id)); 
-        //return ((List<Zaliczenie>) query.list());
-        //Session session=entityManager.unwrap(Session.class);
-        String queryString = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
-                "WHERE LOWER(s.nazwisko) = :nazwisko";
-        
-        javax.persistence.Query query = entityManager.createQuery(queryString);
-        System.out.println("wybor: "+id);
-        //query.setParameter("id", id);
-        String nazwisko = "Nowak";
-        query.setParameter("nazwisko", nazwisko.toLowerCase());
-        
-        List<Zaliczenie> t = query.getResultList();
-        for(Zaliczenie z:t){
-            System.out.println(z.getWyklad().getPrzedmiot().getNazwa());
-        }
-        
+	    String queryString2 = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
+                "WHERE s.id = :id";
+        javax.persistence.Query query = entityManager.createQuery(queryString2);
+        query.setParameter("id", id);
         return (List<Zaliczenie>)query.getResultList();
-        //return castList(Zaliczenie.class, query.getResultList());
     }
 	
 }
