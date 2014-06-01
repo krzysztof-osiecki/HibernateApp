@@ -74,16 +74,16 @@ public class Finder{
 		return true;
 	}
 	
-	/*@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public List<Zaliczenie> findCreditsOfStudent(int id) {
-		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
+		String queryString = "SELECT  FROM Zaliczenie WHERE s.id = :id";
 		query = (Query) entityManager.createQuery(queryString);
 		query.setParameter("id", String.valueOf(id)); 
 		return ((List<Zaliczenie>) query.getResultList());
-	}*/
+	}
 	
-	public List<Zaliczenie> findCreditsOfStudent(int id) {
-        //String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";     
+	/*public List<Zaliczenie> findCreditsOfStudent(int id) {
+        //String queryString = "SELECT z FROM Zaliczenie WHERE s.id = :id";     
         //query = (Query) entityManager.createQuery(queryString);
         //query.setParameter("id", String.valueOf(id)); 
         //return ((List<Zaliczenie>) query.list());
@@ -104,6 +104,6 @@ public class Finder{
         
         return (List<Zaliczenie>)query.getResultList();
         //return castList(Zaliczenie.class, query.getResultList());
-    }
+    }*/
 	
 }
