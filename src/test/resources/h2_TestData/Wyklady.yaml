@@ -1,4 +1,4 @@
-- !package javahive.domain
+    - !package javahive.domain
 
 - !import h2_testData/Zaliczenia.yaml
 
