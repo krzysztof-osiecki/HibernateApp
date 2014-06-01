@@ -1,9 +1,14 @@
 package javahive.api.dto;
 
 import java.io.Serializable;
+import lombok.*;
 
 import javahive.domain.Ocena;
 import javahive.domain.Wyklad;
+
+@ToString
+@Getter
+@Setter
 
 public class ZaliczenieDTO implements Serializable{
     private String ocena;
