@@ -1,9 +1,11 @@
 package javahive.api.dto;
 
+import java.io.Serializable;
+
 import javahive.domain.Ocena;
 import javahive.domain.Wyklad;
 
-public class ZaliczenieDTO {
+public class ZaliczenieDTO implements Serializable{
     private String ocena;
     private String przedmiot;
     private String wykladowca;

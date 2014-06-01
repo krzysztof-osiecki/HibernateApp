@@ -1,9 +1,11 @@
 package javahive.api.dto;
 
+import java.io.Serializable;
+
 import javahive.domain.Przedmiot;
 import javahive.domain.Wykladowca;
 
-public class WykladDTO {
+public class WykladDTO implements Serializable{
     private String wykladowca;
     private String przedmiot;
     private WykladDTO(WykladDTOBuilder wykladDTOBuilder){
