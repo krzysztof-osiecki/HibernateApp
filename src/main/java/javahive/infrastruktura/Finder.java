@@ -36,24 +36,24 @@ public class Finder{
 	}
 	
 	public List<Student> findStudentsWithName(String name) {
-		String queryString = "SELECT * FROM Student WHERE s.imie = name";
+		String queryString = "SELECT * FROM Student WHERE s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("imie", name); 
+		query.setParameter("name", name); 
 		return ((List<Student>) query.list());
 	}
 	
 	public List<Student> findStudentsWithLastName(String lastName) {
-		String queryString = "SELECT * FROM Student WHERE s.nazwisko = lastName";
+		String queryString = "SELECT * FROM Student WHERE s.nazwisko = :lastName";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("nazwisko", lastName); 
+		query.setParameter("lastName", lastName); 
 		return ((List<Student>) query.list());
 	}
 	
 	public List<Student> findStudentsWithFullName(String name, String lastName) {
-		String queryString = "SELECT * FROM Student WHERE s.nazwisko = lastName AND s.imie = name";
+		String queryString = "SELECT * FROM Student WHERE s.nazwisko = :lastName AND s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("nazwisko", lastName); 
-		query.setParameter("imie", name);
+		query.setParameter("lastName", lastName); 
+		query.setParameter("name", name);
 		return ((List<Student>) query.list());
 	}
 	
