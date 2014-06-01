@@ -71,10 +71,25 @@ public class Finder{
 		return true;
 	}
 	
-	public List<Zaliczenie> findCreditsOfStudent(int id) {
-		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
-		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("id", String.valueOf(id)); 
-		return ((List<Zaliczenie>) query.list());
-	}
+    public List<Zaliczenie> findCreditsOfStudent(int id) {
+        //String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";     
+        //query = (Query) entityManager.createQuery(queryString);
+        //query.setParameter("id", String.valueOf(id)); 
+        //return ((List<Zaliczenie>) query.list());
+        Session session=entityManager.unwrap(Session.class);
+        String queryString = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
+                "WHERE s.id = :id";
+        
+        javax.persistence.Query query = entityManager.createQuery(queryString);
+        System.out.println("wybor: "+id);
+        query.setParameter("id", id);
+        
+        List<Zaliczenie> t = query.getResultList();
+        for(Zaliczenie z:t){
+            System.out.println(z.getWyklad().getPrzedmiot().getNazwa());
+        }
+        
+        return (List<Zaliczenie>)query.getResultList();
+        //return castList(Zaliczenie.class, query.getResultList());
+    }
 }
