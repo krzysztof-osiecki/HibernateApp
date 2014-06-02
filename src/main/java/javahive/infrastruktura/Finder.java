@@ -4,6 +4,7 @@ import java.util.List;
 
 import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
+import javahive.domain.Ocena;
 import javahive.domain.Wyklad;
 import javahive.domain.Student;
 import javahive.domain.Zaliczenie;
@@ -87,16 +88,14 @@ public class Finder{
 		return true;
 	}
 	
-	public boolean setCreditGrade(String indexStudenta, int idZaliczenia, String ocena)
+	public boolean setCreditGrade(int idZaliczenia, int ocenaId)
 	{
-		String queryString = "UPDATE Zaliczenie z SET z.ocena = :ocena"
-				+ " WHERE z.indeks = :indexStudenta AND z.id = :idZaliczenia";
-		query = entityManager.createQuery(queryString);
-		query.setParameter("ocena", ocena);
-		query.setParameter("indexStudenta", indexStudenta);
-		query.setParameter("idZaliczenia", idZaliczenia);
-		System.out.println(query.toString());
-		query.executeUpdate();
+	    String queryString = "UPDATE Zaliczenie z SET z.ocena = :ocena"
+                + " WHERE z.id = :idZaliczenia";
+        query = entityManager.createQuery(queryString);
+        query.setParameter("ocena", entityManager.find(Ocena.class, ocenaId));
+        query.setParameter("idZaliczenia", idZaliczenia);
+        query.executeUpdate();
 		return true;
 	}
 	

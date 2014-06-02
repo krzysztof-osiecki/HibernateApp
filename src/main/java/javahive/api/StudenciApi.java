@@ -3,9 +3,11 @@ package javahive.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import javahive.api.dto.OcenaDTO;
 import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
 import javahive.api.dto.ZaliczenieDTO;
+import javahive.domain.Ocena;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Zaliczenie;
@@ -138,14 +140,26 @@ public class StudenciApi {
         return finder.setPersonalData(studentId, imie, nazwisko);
     }
     
-   public boolean wystawOcene(String nrIndexu, int idZaliczenia, String ocena)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
+   public boolean wystawOcene(int idZaliczenia, int ocenaId)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
    {
-	   return finder.setCreditGrade(nrIndexu, idZaliczenia, ocena);
+	   return finder.setCreditGrade(idZaliczenia, ocenaId);
    }
     
     public StudentDTO przywrocStudenta(int studentId) {
         //TODO public StudentDTO przywrocStudenta(int studentId){
         return null;
+    }
+    
+    public List<OcenaDTO> pobierzOceny(){
+        List<Ocena> oceny = finder.findAll(Ocena.class);
+        List<OcenaDTO> ocenydto = new ArrayList<OcenaDTO>();
+        for(Ocena ocena:oceny){
+            ocenydto.add(new OcenaDTO.OcenaDTOBuilder()
+                .id(ocena.getId())
+                .wysokosc(ocena.getWysokosc())
+                .buduj());
+        }
+        return ocenydto;
     }
 
 }
