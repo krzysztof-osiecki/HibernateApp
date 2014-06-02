@@ -125,6 +125,7 @@ public class StudenciApi {
         List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
         for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)) {
         	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
+        	.id(zaliczenie.getId())
         	.ocena(zaliczenie.getOcena())
         	.wyklad(zaliczenie.getWyklad())
             .buduj();
