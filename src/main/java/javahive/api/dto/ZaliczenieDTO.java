@@ -11,28 +11,20 @@ import javahive.domain.Wyklad;
 @Setter
 
 public class ZaliczenieDTO implements Serializable{
-    private int id;
     private String ocena;
     private String przedmiot;
     private String wykladowca;
     private ZaliczenieDTO(ZaliczenieDTOBuilder zaliczenieDTOBuilder) {
-        this.id = zaliczenieDTOBuilder.id;
     	this.ocena = zaliczenieDTOBuilder.ocena;
     	this.przedmiot = zaliczenieDTOBuilder.przedmiot;
     	this.wykladowca = zaliczenieDTOBuilder.wykladowca;
     }
     
     public static class ZaliczenieDTOBuilder {
-        private int id;
         private String ocena;
         private String przedmiot;
         private String wykladowca;
     	public ZaliczenieDTOBuilder() {
-    	}
-    	
-    	public ZaliczenieDTOBuilder id(int id){
-    	    this.id = id;
-    	    return this;
     	}
     	
     	public ZaliczenieDTOBuilder ocena(Ocena ocena) {

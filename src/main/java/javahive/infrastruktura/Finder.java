@@ -4,7 +4,6 @@ import java.util.List;
 
 import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
-import javahive.domain.Ocena;
 import javahive.domain.Wyklad;
 import javahive.domain.Student;
 import javahive.domain.Zaliczenie;
@@ -68,43 +67,26 @@ public class Finder{
 		return (Student) query.getResultList();
 	}
 	
-	public boolean deleteStudentWithIndexNumber(int id) {
-		String queryString = "DELETE FROM Student s WHERE s.id = :id";
+	public boolean deleteStudentWithIndexNumber(String indexNumber) {
+		String queryString = "DELETE FROM Student s WHERE s.indeks_id = :id";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("id", id);
-		query.executeUpdate();
+		query.setParameter("id", indexNumber);
 		return true;
 	}
 	
-	public boolean setPersonalData(int id, String name, String lastName)
-	{
-		String queryString = "UPDATE Student s SET s.imie = :name, s.nazwisko = :lastName"
-				+ " WHERE s.id = :id";
-		query = entityManager.createQuery(queryString);
-		query.setParameter("name", name);
-		query.setParameter("lastName", lastName);
-		query.setParameter("id", id);
-		query.executeUpdate();
-		return true;
-	}
-	
-	public boolean setCreditGrade(int idZaliczenia, int ocenaId)
-	{
-	    String queryString = "UPDATE Zaliczenie z SET z.ocena = :ocena"
-                + " WHERE z.id = :idZaliczenia";
-        query = entityManager.createQuery(queryString);
-        query.setParameter("ocena", entityManager.find(Ocena.class, ocenaId));
-        query.setParameter("idZaliczenia", idZaliczenia);
-        query.executeUpdate();
-		return true;
-	}
-	
+	/*@SuppressWarnings("unchecked")
+	public List<Zaliczenie> findCreditsOfStudent(int id) {
+		String queryString = "SELECT * FROM Zaliczenie WHERE s.id = :id";
+		query = (Query) entityManager.createQuery(queryString);
+		query.setParameter("id", String.valueOf(id)); 
+		return ((List<Zaliczenie>) query.getResultList());
+	}*/
 	
 	@SuppressWarnings("unchecked")
 	public List<Zaliczenie> findCreditsOfStudent(int id) {
-	    String queryString = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
+	    String queryString2 = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
                 "WHERE s.id = :id";
-        query = entityManager.createQuery(queryString);
+        query = entityManager.createQuery(queryString2);
         query.setParameter("id", id);
         return (List<Zaliczenie>)query.getResultList();
     }
