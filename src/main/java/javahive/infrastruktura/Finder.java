@@ -79,7 +79,7 @@ public class Finder{
 	public boolean setPersonalData(int id, String name, String lastName)
 	{
 		String queryString = "UPDATE Student s SET s.imie = :name, s.nazwisko = :lastName"
-				+ "WHERE s.id = :id";
+				+ " WHERE s.id = :id";
 		query = entityManager.createQuery(queryString);
 		query.setParameter("name", name);
 		query.setParameter("lastName", lastName);
