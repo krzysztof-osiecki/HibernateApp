@@ -3,9 +3,11 @@ package javahive.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import javahive.api.dto.OcenaDTO;
 import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
 import javahive.api.dto.ZaliczenieDTO;
+import javahive.domain.Ocena;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Zaliczenie;
@@ -46,6 +48,7 @@ public class StudenciApi {
         List wykladyDTO=new ArrayList<WykladDTO>();
         for(Wyklad wyklad: finder.findAll(Wyklad.class)) {
             WykladDTO wykladDTO= new WykladDTO.WykladDTOBuilder()
+            .id(wyklad.getId())
             .wykladowca(wyklad.getWykladowca())
             .przedmiot(wyklad.getPrzedmiot())
             .build();
@@ -117,14 +120,15 @@ public class StudenciApi {
     	return  studenciDTO;
     }
     
-    public boolean usunStudenta(String indexNumber) {
-        return finder.deleteStudentWithIndexNumber(indexNumber);
+    public boolean usunStudenta(int id) {
+        return finder.deleteStudentWithIndexNumber(id);
     }
     
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
         List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
         for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)) {
         	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
+        	.id(zaliczenie.getId())
         	.ocena(zaliczenie.getOcena())
         	.wyklad(zaliczenie.getWyklad())
             .buduj();
@@ -133,14 +137,30 @@ public class StudenciApi {
         return zaliczeniaDTO;
     }
     
-    public boolean wystawOcene(int studentId, int zaliczenieId) {
-        //TODO public boolean wystawOcene(int studentId, int zaliczenieId){
-        return false;
+    public boolean edytujDaneStudenta(int studentId, String imie, String nazwisko) {
+        return finder.setPersonalData(studentId, imie, nazwisko);
     }
+    
+   public boolean wystawOcene(int idZaliczenia, int ocenaId)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
+   {
+	   return finder.setCreditGrade(idZaliczenia, ocenaId);
+   }
     
     public StudentDTO przywrocStudenta(int studentId) {
         //TODO public StudentDTO przywrocStudenta(int studentId){
         return null;
+    }
+    
+    public List<OcenaDTO> pobierzOceny(){
+        List<Ocena> oceny = finder.findAll(Ocena.class);
+        List<OcenaDTO> ocenydto = new ArrayList<OcenaDTO>();
+        for(Ocena ocena:oceny){
+            ocenydto.add(new OcenaDTO.OcenaDTOBuilder()
+                .id(ocena.getId())
+                .wysokosc(ocena.getWysokosc())
+                .buduj());
+        }
+        return ocenydto;
     }
 
 }
