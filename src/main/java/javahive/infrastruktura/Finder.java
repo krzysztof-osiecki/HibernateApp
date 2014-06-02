@@ -90,11 +90,12 @@ public class Finder{
 	public boolean setCreditGrade(String indexStudenta, int idZaliczenia, String ocena)
 	{
 		String queryString = "UPDATE Zaliczenie z SET z.ocena = :ocena"
-				+ "WHERE z.indeks = :indexStudenta AND z.id = :idZaliczenia";
+				+ " WHERE z.indeks = :indexStudenta AND z.id = :idZaliczenia";
 		query = entityManager.createQuery(queryString);
 		query.setParameter("ocena", ocena);
 		query.setParameter("indexStudenta", indexStudenta);
 		query.setParameter("idZaliczenia", idZaliczenia);
+		System.out.println(query.toString());
 		query.executeUpdate();
 		return true;
 	}
