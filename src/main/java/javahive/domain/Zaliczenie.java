@@ -20,7 +20,7 @@ public class Zaliczenie extends BaseEntity{
     @JoinColumn(name="wyklad_id",referencedColumnName="id")
     private Wyklad wyklad;
     
-    @ManyToOne
-    @JoinColumn(name="ocena_id",referencedColumnName="id")
+    @ManyToOne(optional=true)
+    @JoinColumn(name="ocena_id")
     private Ocena ocena;
 }
