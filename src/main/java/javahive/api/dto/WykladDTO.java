@@ -1,9 +1,14 @@
 package javahive.api.dto;
 
+import lombok.*;
 import java.io.Serializable;
 
 import javahive.domain.Przedmiot;
 import javahive.domain.Wykladowca;
+
+@Getter
+@Setter
+@ToString
 
 public class WykladDTO implements Serializable{
     private String wykladowca;
