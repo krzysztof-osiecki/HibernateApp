@@ -48,6 +48,7 @@ public class StudenciApi {
         List wykladyDTO=new ArrayList<WykladDTO>();
         for(Wyklad wyklad: finder.findAll(Wyklad.class)) {
             WykladDTO wykladDTO= new WykladDTO.WykladDTOBuilder()
+            .id(wyklad.getId())
             .wykladowca(wyklad.getWykladowca())
             .przedmiot(wyklad.getPrzedmiot())
             .build();
