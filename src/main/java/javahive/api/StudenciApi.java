@@ -137,7 +137,7 @@ public class StudenciApi {
         return finder.setPersonalData(studentId, imie, nazwisko);
     }
     
-   public boolean wystawOcene(String nrIndexu, int idZaliczenia, int ocena)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
+   public boolean wystawOcene(String nrIndexu, int idZaliczenia, String ocena)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
    {
 	   return finder.setCreditGrade(nrIndexu, idZaliczenia, ocena);
    }

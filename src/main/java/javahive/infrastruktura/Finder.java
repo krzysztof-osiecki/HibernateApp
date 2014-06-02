@@ -87,7 +87,7 @@ public class Finder{
 		return true;
 	}
 	
-	public boolean setCreditGrade(String indexStudenta, int idZaliczenia, int ocena)
+	public boolean setCreditGrade(String indexStudenta, int idZaliczenia, String ocena)
 	{
 		String queryString = "UPDATE Zaliczenie z SET z.ocena = :ocena"
 				+ "WHERE z.indeks = :indexStudenta AND z.id = :idZaliczenia";
