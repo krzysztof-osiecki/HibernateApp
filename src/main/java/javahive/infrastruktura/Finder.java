@@ -114,11 +114,25 @@ public class Finder{
 
 	public String zwiekszIndex(String index)
 	{
-		String result;
+	    int indexInt = Integer.parseInt(index);
+	    indexInt++;
+	    String result = String.valueOf(indexInt);
+	    if(result.length()>6){
+	        return "000000";
+	    }
+	    else if(result.length()<6){
+	        for(int i = result.length(); i < 6; i++){
+	            result = "0"+result;
+	        }
+	        return result;
+	    }
+	    return result;
+	    
+		/*String result;
 		for(int i=index.length()-1; i>0; i++)
 		{
 			if(index.charAt(i)<'9'){
-				result=index.substring(0, i)+index.charAt(i)+index.substring(i, index.length());
+				result=index.substring(0, i)+(index.charAt(i)+1)+index.substring(i+1, index.length());
 				return result;
 			}
 			else
@@ -126,7 +140,7 @@ public class Finder{
 				index=index.substring(0, i)+'0'+index.substring(i, index.length());
 			}
 		}
-		return null;
+		return null;*/
 	}
 	
     public boolean utworzStudenta(String imie, String nazwisko, String wykladIds){
@@ -158,7 +172,7 @@ public class Finder{
         .buduj();
         
         indeks.setStudent(student);
-        String queryString = "SELECT MAX(s.index) FROM Student s";
+        String queryString = "SELECT MAX(i.numer) FROM Indeks i";
         String maxIndex = (String)entityManager.createQuery(queryString).getSingleResult();
         String nowyIndex = zwiekszIndex(maxIndex);
         if(nowyIndex!=null)
@@ -167,7 +181,9 @@ public class Finder{
         }
         else
         {
+            indeks.setNumer("000000");
         	//ZABRAKLO INDEXOW, NIE WIEM JAK CHCESZ TO ROZWIAZAC
+            //Na zaliczenie nie zabraknie ;p
         }
         
         entityManager.persist(indeks);         
@@ -176,7 +192,7 @@ public class Finder{
             entityManager.persist(z);
         }
         
-        return false;
+        return true;
     }
 	
 }
