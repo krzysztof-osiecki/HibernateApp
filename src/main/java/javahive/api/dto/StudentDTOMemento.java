@@ -29,8 +29,8 @@ public class StudentDTOMemento implements Serializable{
     	this.wieczny = studentDTO.isWieczny();
     	this.id = studentDTO.getId();
     }
-    public StudentDTO getState()
-    {
-    	return new StudentDTO(this);
-    }
+    //public StudentDTO getState()
+    //{
+    // 	return new StudentDTO(this);
+    //}
 }
