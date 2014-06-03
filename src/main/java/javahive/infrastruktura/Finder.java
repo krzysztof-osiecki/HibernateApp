@@ -1,9 +1,11 @@
 package javahive.infrastruktura;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
+import javahive.domain.Indeks;
 import javahive.domain.Ocena;
 import javahive.domain.Wyklad;
 import javahive.domain.Student;
@@ -107,6 +109,47 @@ public class Finder{
         query = entityManager.createQuery(queryString);
         query.setParameter("id", id);
         return (List<Zaliczenie>)query.getResultList();
+    }
+	
+
+    public boolean utworzStudenta(String imie, String nazwisko, String wykladIds){
+        
+        String[] wykladIdArray = wykladIds.split(",");
+        
+        List<Zaliczenie> zaliczenia = new ArrayList<Zaliczenie>();
+        for(String idString: wykladIdArray){
+            int idWykladu = Integer.parseInt(idString);
+            Zaliczenie zaliczenie = new Zaliczenie();
+            zaliczenie.setWyklad(
+                        entityManager.find(Wyklad.class, idWykladu)
+                    );
+            zaliczenia.add(zaliczenie);
+        }
+        
+        
+        Indeks indeks= new Indeks();        
+        indeks.setZaliczenia(zaliczenia);
+        
+        for(Zaliczenie z:zaliczenia){
+            z.setIndeks(indeks);
+        }
+        
+        Student student = new Student();
+        student.setImie(imie);
+        student.setNazwisko(nazwisko);
+        
+        student.setIndeks(indeks);
+        indeks.setStudent(student);
+        
+        //zdobyc maks numer indeksu z bazy, inkrementnac i dodac do indeksu
+        
+        entityManager.persist(indeks);         
+        entityManager.persist(student);
+        for(Zaliczenie z:zaliczenia){
+            entityManager.persist(z);
+        }
+        
+        return false;
     }
 	
 }
