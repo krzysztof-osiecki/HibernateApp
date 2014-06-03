@@ -91,6 +91,7 @@ public class StudenciApi {
             .indeks(student.getIndeks())
             .id(student.getId())
             .buduj();
+        	mementoCaretaker.setMemento(studentDTO.createMemento());
             studenciDTO.add(studentDTO);
         }
         return studenciDTO;
