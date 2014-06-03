@@ -30,6 +30,20 @@ public class StudentDTO implements Serializable{
     	this.id = studentDTOBuilder.id;
     }
     
+    public StudentDTO(StudentDTOMemento studentDTOMemento)
+    {
+    	this.imie=studentDTOMemento.getImie();
+    	this.nazwisko=studentDTOMemento.getNazwisko();
+    	this.wieczny=studentDTOMemento.isWieczny();
+    	this.numerIndeksu=studentDTOMemento.getNumerIndeksu();
+    	this.id=studentDTOMemento.getId();
+    }
+    
+    public StudentDTOMemento createMemento()
+    {
+    	return new StudentDTOMemento(this);
+    }
+    
     public static class StudentDTOBuilder {
     	private String imie;
     	private String nazwisko;
@@ -39,6 +53,8 @@ public class StudentDTO implements Serializable{
     	
     	public StudentDTOBuilder() {
     	}
+    
+        
     	
     	public StudentDTOBuilder imie(String imie) {
     		this.imie = imie;

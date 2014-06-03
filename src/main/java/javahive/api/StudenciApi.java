@@ -5,6 +5,7 @@ import java.util.List;
 
 import javahive.api.dto.OcenaDTO;
 import javahive.api.dto.StudentDTO;
+import javahive.api.dto.StudentDTOMementoCaretaker;
 import javahive.api.dto.WykladDTO;
 import javahive.api.dto.ZaliczenieDTO;
 import javahive.domain.Ocena;
@@ -28,7 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class StudenciApi {
     @Inject
     private Finder finder;
+    private StudentDTOMementoCaretaker mementoCaretaker;
     public List<StudentDTO> getListaWszystkichStudentow() {
+    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
         List studentciDTO=new ArrayList<StudentDTO>();
         for(Student student: finder.findAll(Student.class)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
@@ -39,6 +42,7 @@ public class StudenciApi {
             .id(student.getId())
             .buduj();
             studentciDTO.add(studentDTO);
+            mementoCaretaker.setMemento(studentDTO.createMemento());
         }
         return studentciDTO;
     }
@@ -63,6 +67,7 @@ public class StudenciApi {
     }
     
     public StudentDTO znajdzStudenta(String indexNumber) {
+    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
     	Student student=finder.findStudentWithIndexNumber(indexNumber);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
@@ -71,11 +76,13 @@ public class StudenciApi {
         .indeks(student.getIndeks())
         .id(student.getId())
         .buduj();
+        mementoCaretaker.setMemento(studentDTO.createMemento());
         return studentDTO;
     }
     
     public List<StudentDTO> znajdzStudentow(String imie, String nazwisko) {
         List studenciDTO=new ArrayList<StudentDTO>();
+    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
         for(Student student: finder.findStudentsWithFullName(imie, nazwisko)) {
         	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
@@ -91,6 +98,7 @@ public class StudenciApi {
     
     public List<StudentDTO> znajdzStudentow(String param, int wariant) {
     	List studenciDTO=new ArrayList<StudentDTO>();
+    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
     	if(wariant==0)	//param==imie
     	{
             for(Student student: finder.findStudentsWithName(param)) {
@@ -102,6 +110,7 @@ public class StudenciApi {
                 .id(student.getId())
                 .buduj();
                 studenciDTO.add(studentDTO);
+                mementoCaretaker.setMemento(studentDTO.createMemento());
             }
     	}
     	else	//param==nazwisko
@@ -115,6 +124,7 @@ public class StudenciApi {
                 .id(student.getId())
                 .buduj();
                 studenciDTO.add(studentDTO);
+                mementoCaretaker.setMemento(studentDTO.createMemento());
             }
     	}
     	return  studenciDTO;
@@ -141,14 +151,14 @@ public class StudenciApi {
         return finder.setPersonalData(studentId, imie, nazwisko);
     }
     
-   public boolean wystawOcene(int idZaliczenia, int ocenaId)	//TU PAMIETAJ ZEBY PRZEKAZAC nrIndexu A NIE id.
+   public boolean wystawOcene(int idZaliczenia, int ocenaId)
    {
 	   return finder.setCreditGrade(idZaliczenia, ocenaId);
    }
     
     public StudentDTO przywrocStudenta(int studentId) {
-        //TODO public StudentDTO przywrocStudenta(int studentId){
-        return null;
+    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+        return new StudentDTO(mementoCaretaker.getMementoOfStudent(studentId));
     }
     
     public List<OcenaDTO> pobierzOceny(){

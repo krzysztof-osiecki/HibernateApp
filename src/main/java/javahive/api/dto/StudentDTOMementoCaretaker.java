@@ -10,6 +10,7 @@ import java.util.List;
 
 public class StudentDTOMementoCaretaker{
     private List<StudentDTOMemento> mementoList = new ArrayList<StudentDTOMemento>();
+    public StudentDTOMementoCaretaker(){}
     public void setMemento(StudentDTOMemento memento)
     {
     	for(StudentDTOMemento student: mementoList)
@@ -27,11 +28,11 @@ public class StudentDTOMementoCaretaker{
     	mementoList.add(memento);
     }
     
-    public StudentDTOMemento getMementoOfStudent(String indexNumber)
+    public StudentDTOMemento getMementoOfStudent(int id)
     {
     	for(StudentDTOMemento student: mementoList)
     	{
-    		if(student.getNumerIndeksu().equals(indexNumber))
+    		if(student.getId()==id)
     		{
     			return student;
     		}
