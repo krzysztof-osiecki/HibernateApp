@@ -112,6 +112,23 @@ public class Finder{
     }
 	
 
+	public String zwiekszIndex(String index)
+	{
+		String result;
+		for(int i=index.length()-1; i>0; i++)
+		{
+			if(index.charAt(i)<'9'){
+				result=index.substring(0, i)+index.charAt(i)+index.substring(i, index.length());
+				return result;
+			}
+			else
+			{
+				index=index.substring(0, i)+'0'+index.substring(i, index.length());
+			}
+		}
+		return null;
+	}
+	
     public boolean utworzStudenta(String imie, String nazwisko, String wykladIds){
         
         String[] wykladIdArray = wykladIds.split(",");
@@ -134,14 +151,24 @@ public class Finder{
             z.setIndeks(indeks);
         }
         
-        Student student = new Student();
-        student.setImie(imie);
-        student.setNazwisko(nazwisko);
+        Student student = new Student.StudentBuilder()
+        .imie(imie)
+        .nazwisko(nazwisko)
+        .indeks(indeks)
+        .buduj();
         
-        student.setIndeks(indeks);
         indeks.setStudent(student);
-        
-        //zdobyc maks numer indeksu z bazy, inkrementnac i dodac do indeksu
+        String queryString = "SELECT MAX(s.index) FROM Student s";
+        String maxIndex = (String)entityManager.createQuery(queryString).getSingleResult();
+        String nowyIndex = zwiekszIndex(maxIndex);
+        if(nowyIndex!=null)
+        {
+        	indeks.setNumer(nowyIndex);
+        }
+        else
+        {
+        	//ZABRAKLO INDEXOW, NIE WIEM JAK CHCESZ TO ROZWIAZAC
+        }
         
         entityManager.persist(indeks);         
         entityManager.persist(student);
