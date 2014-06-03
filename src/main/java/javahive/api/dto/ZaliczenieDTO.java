@@ -36,7 +36,9 @@ public class ZaliczenieDTO implements Serializable{
     	}
     	
     	public ZaliczenieDTOBuilder ocena(Ocena ocena) {
-    		this.ocena=ocena.getWysokosc();
+    	    if(ocena!=null){
+    	        this.ocena=ocena.getWysokosc();
+    	    }
     		return this;
     	}
     	

@@ -162,5 +162,9 @@ public class StudenciApi {
         }
         return ocenydto;
     }
-
+    
+    public boolean utworzStudenta(String imie, String nazwisko, String wykladIds){
+        return finder.utworzStudenta(imie, nazwisko, wykladIds);
+    }
+    
 }
