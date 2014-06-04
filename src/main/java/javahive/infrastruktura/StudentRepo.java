@@ -21,13 +21,13 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Finder{
+public class StudentRepo{
 	
 	@PersistenceContext
 	public EntityManager entityManager;
 	private Query query;
 	
-	public Finder(){}
+	public StudentRepo(){}
 	
 	public <T> List<T> findAll(Class <T> c) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -163,13 +163,9 @@ public class Finder{
 		return null;*/
 	}
 	
-    public boolean utworzStudenta(String imie, String nazwisko, String wykladIds){
-        
-        String[] wykladIdArray = wykladIds.split(",");
-        
+    public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds){
         List<Zaliczenie> zaliczenia = new ArrayList<Zaliczenie>();
-        for(String idString: wykladIdArray){
-            int idWykladu = Integer.parseInt(idString);
+        for(int idWykladu: wykladIds){
             Zaliczenie zaliczenie = new Zaliczenie();
             zaliczenie.setWyklad(
                         entityManager.find(Wyklad.class, idWykladu)

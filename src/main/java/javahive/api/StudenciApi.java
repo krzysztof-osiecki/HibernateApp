@@ -12,7 +12,7 @@ import javahive.domain.Ocena;
 import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Zaliczenie;
-import javahive.infrastruktura.Finder;
+import javahive.infrastruktura.StudentRepo;
 
 import javax.inject.Inject;
 
@@ -28,12 +28,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED)
 public class StudenciApi {
     @Inject
-    private Finder finder;
+    private StudentRepo studentRepo;
     private StudentDTOMementoCaretaker mementoCaretaker;
     public List<StudentDTO> getListaWszystkichStudentow() {
     	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
         List studentciDTO=new ArrayList<StudentDTO>();
-        for(Student student: finder.findAll(Student.class)) {
+        for(Student student: studentRepo.findAll(Student.class)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
             .nazwisko(student.getNazwisko())
@@ -50,7 +50,7 @@ public class StudenciApi {
     //Dodatkowa funkcjonalnosc
     public List<WykladDTO> getListaWszystkichWykladow() {
         List wykladyDTO=new ArrayList<WykladDTO>();
-        for(Wyklad wyklad: finder.findAll(Wyklad.class)) {
+        for(Wyklad wyklad: studentRepo.findAll(Wyklad.class)) {
             WykladDTO wykladDTO= new WykladDTO.WykladDTOBuilder()
             .id(wyklad.getId())
             .wykladowca(wyklad.getWykladowca())
@@ -63,12 +63,12 @@ public class StudenciApi {
 
 
     public int getLiczbaStudentow() {
-        return finder.findAll(Student.class).size();
+        return studentRepo.findAll(Student.class).size();
     }
     
     public StudentDTO znajdzStudenta(String indexNumber) {
     	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
-    	Student student=finder.findStudentWithIndexNumber(indexNumber);
+    	Student student=studentRepo.findStudentWithIndexNumber(indexNumber);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
         .nazwisko(student.getNazwisko())
@@ -83,7 +83,7 @@ public class StudenciApi {
     public List<StudentDTO> znajdzStudentow(String imie, String nazwisko) {
         List studenciDTO=new ArrayList<StudentDTO>();
     	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
-        for(Student student: finder.findStudentsWithFullName(imie, nazwisko)) {
+        for(Student student: studentRepo.findStudentsWithFullName(imie, nazwisko)) {
         	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
             .nazwisko(student.getNazwisko())
@@ -102,7 +102,7 @@ public class StudenciApi {
     	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
     	if(wariant==0)	//param==imie
     	{
-            for(Student student: finder.findStudentsWithName(param)) {
+            for(Student student: studentRepo.findStudentsWithName(param)) {
             	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
                 .imie(student.getImie())
                 .nazwisko(student.getNazwisko())
@@ -116,7 +116,7 @@ public class StudenciApi {
     	}
     	else	//param==nazwisko
     	{
-            for(Student student: finder.findStudentsWithLastName(param)) {
+            for(Student student: studentRepo.findStudentsWithLastName(param)) {
             	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
                 .imie(student.getImie())
                 .nazwisko(student.getNazwisko())
@@ -134,7 +134,7 @@ public class StudenciApi {
     public List<StudentDTO> znajdzStudentowPo(String index, String imie, String nazwisko){
         List studenciDTO=new ArrayList<StudentDTO>();
         if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
-        for(Student student: finder.findStudentsBy(index,imie, nazwisko)) {
+        for(Student student: studentRepo.findStudentsBy(index,imie, nazwisko)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
             .nazwisko(student.getNazwisko())
@@ -149,12 +149,12 @@ public class StudenciApi {
     }
     
     public boolean usunStudenta(int id) {
-        return finder.deleteStudentWithIndexNumber(id);
+        return studentRepo.deleteStudentWithIndexNumber(id);
     }
     
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
         List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
-        for(Zaliczenie zaliczenie: finder.findCreditsOfStudent(studentId)) {
+        for(Zaliczenie zaliczenie: studentRepo.findCreditsOfStudent(studentId)) {
         	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
         	.id(zaliczenie.getId())
         	.ocena(zaliczenie.getOcena())
@@ -166,12 +166,12 @@ public class StudenciApi {
     }
     
     public boolean edytujDaneStudenta(int studentId, String imie, String nazwisko) {
-        return finder.setPersonalData(studentId, imie, nazwisko);
+        return studentRepo.setPersonalData(studentId, imie, nazwisko);
     }
     
    public boolean wystawOcene(int idZaliczenia, int ocenaId)
    {
-	   return finder.setCreditGrade(idZaliczenia, ocenaId);
+	   return studentRepo.setCreditGrade(idZaliczenia, ocenaId);
    }
     
     public StudentDTO przywrocStudenta(int studentId) {
@@ -180,7 +180,7 @@ public class StudenciApi {
     }
     
     public List<OcenaDTO> pobierzOceny(){
-        List<Ocena> oceny = finder.findAll(Ocena.class);
+        List<Ocena> oceny = studentRepo.findAll(Ocena.class);
         List<OcenaDTO> ocenydto = new ArrayList<OcenaDTO>();
         for(Ocena ocena:oceny){
             ocenydto.add(new OcenaDTO.OcenaDTOBuilder()
@@ -191,8 +191,8 @@ public class StudenciApi {
         return ocenydto;
     }
     
-    public boolean utworzStudenta(String imie, String nazwisko, String wykladIds){
-        return finder.utworzStudenta(imie, nazwisko, wykladIds);
+    public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds){
+        return studentRepo.utworzStudenta(imie, nazwisko, wykladIds);
     }
     
 }

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import javahive.infrastruktura.Finder;
+import javahive.infrastruktura.StudentRepo;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -36,7 +36,7 @@ public class StudentTest {
     @PersistenceContext
     private EntityManager entityManager;
     @Inject
-    Finder finder;
+    StudentRepo finder;
     @Inject
     RepozytoriumStudent repozytoriumStudentImpl;
         

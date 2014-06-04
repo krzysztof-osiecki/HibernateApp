@@ -19,7 +19,7 @@ import javax.persistence.EntityTransaction;
 public class DBFiller implements ApplicationContextAware{
 
 	@Inject
-    private Finder finder;
+    private StudentRepo finder;
 
     @Inject
     private EntityManagerFactory entityManagerFactory;
