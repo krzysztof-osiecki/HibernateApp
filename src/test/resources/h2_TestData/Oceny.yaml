@@ -3,13 +3,22 @@
 - !import h2_testData/Zaliczenia.yaml
 
 - Ocena(2):
-    wysokosc: 2
+    wysokosc: "2.0"
+
+- Ocena(2.5):
+    wysokosc: "2.5"
 
 - Ocena(3):
-    wysokosc: 3
+    wysokosc: "3.0"
+    
+- Ocena(3i5):
+    wysokosc: "3.5"
 
 - Ocena(4):
-    wysokosc: 4
+    wysokosc: "4.0"
+
+- Ocena(4i5):
+    wysokosc: "4.5"
 
 - Ocena(5):
-    wysokosc: 5
+    wysokosc: "5.0"
