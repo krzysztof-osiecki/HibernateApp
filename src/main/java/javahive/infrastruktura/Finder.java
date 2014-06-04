@@ -63,6 +63,26 @@ public class Finder{
 		return ((List<Student>) query.getResultList());
 	}
 	
+	public List<Student> findStudentsBy(String indexNumber, String name, String lastName){
+	    String queryString = "SELECT s FROM Student s WHERE s.nazwisko LIKE :lastName OR s.imie LIKE :name OR s.indeks.numer LIKE :indexNumber";
+	    
+        query = (Query) entityManager.createQuery(queryString);
+	    if(indexNumber==null){
+	        indexNumber = "";
+	    }
+	    if(lastName==null){
+	        lastName="";
+	    }
+	    if(name==null){
+	        name="";
+	    }
+	    System.out.println(indexNumber+" "+name+" "+lastName);
+        query.setParameter("lastName", "%"+lastName+"%"); 
+        query.setParameter("name", "%"+name+"%");
+        query.setParameter("indexNumber", "%"+indexNumber+"%");
+        return ((List<Student>) query.getResultList());
+	}
+	
 	public Student findStudentWithIndexNumber(String indexNumber) {
 		String queryString = "SELECT s FROM Student s WHERE s.index_id = :id";
 		query = (Query) entityManager.createQuery(queryString);

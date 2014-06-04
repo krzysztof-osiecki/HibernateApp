@@ -131,6 +131,23 @@ public class StudenciApi {
     	return  studenciDTO;
     }
     
+    public List<StudentDTO> znajdzStudentowPo(String index, String imie, String nazwisko){
+        List studenciDTO=new ArrayList<StudentDTO>();
+        if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+        for(Student student: finder.findStudentsBy(index,imie, nazwisko)) {
+            StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+            .imie(student.getImie())
+            .nazwisko(student.getNazwisko())
+            .wieczny(student.isWieczny())
+            .indeks(student.getIndeks())
+            .id(student.getId())
+            .buduj();
+            mementoCaretaker.setMemento(studentDTO.createMemento());
+            studenciDTO.add(studentDTO);
+        }
+        return studenciDTO;
+    }
+    
     public boolean usunStudenta(int id) {
         return finder.deleteStudentWithIndexNumber(id);
     }
