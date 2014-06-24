@@ -147,23 +147,12 @@ public class StudentRepo{
 	        return result;
 	    }
 	    return result;
-	    
-		/*String result;
-		for(int i=index.length()-1; i>0; i++)
-		{
-			if(index.charAt(i)<'9'){
-				result=index.substring(0, i)+(index.charAt(i)+1)+index.substring(i+1, index.length());
-				return result;
-			}
-			else
-			{
-				index=index.substring(0, i)+'0'+index.substring(i, index.length());
-			}
-		}
-		return null;*/
 	}
 	
-    public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds){
+    public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds) 
+    throws Exception{
+    	List<Student> lista = findStudentsWithFullName(imie, nazwisko);
+    	if(lista.size() != 0 ) throw new Exception("Student juz istnieje w bazie");
         List<Zaliczenie> zaliczenia = new ArrayList<Zaliczenie>();
         for(int idWykladu: wykladIds){
             Zaliczenie zaliczenie = new Zaliczenie();
@@ -197,9 +186,7 @@ public class StudentRepo{
         }
         else
         {
-            indeks.setNumer("000000");
-        	//ZABRAKLO INDEXOW, NIE WIEM JAK CHCESZ TO ROZWIAZAC
-            //Na zaliczenie nie zabraknie ;p
+            throw new Exception("Zabraklo numerow idexu");
         }
         
         entityManager.persist(indeks);         

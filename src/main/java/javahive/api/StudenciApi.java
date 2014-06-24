@@ -192,7 +192,15 @@ public class StudenciApi {
     }
     
     public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds){
-        return studentRepo.utworzStudenta(imie, nazwisko, wykladIds);
+        try
+        {
+        	return studentRepo.utworzStudenta(imie, nazwisko, wykladIds);
+        }
+        catch(Exception e)
+        {
+        	//Gdybysmy mieli log, to tutaj logowalibysmy informacje z wyjatku
+        	return false;
+        }
     }
     
 }
