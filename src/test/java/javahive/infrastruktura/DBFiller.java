@@ -11,6 +11,7 @@ import com.fixy.JpaFixyBuilder;
 import javahive.domain.Indeks;
 import javahive.domain.Ocena;
 import javahive.domain.Przedmiot;
+import javahive.domain.Student;
 import javahive.domain.Wyklad;
 import javahive.domain.Wykladowca;
 import javahive.domain.Zaliczenie;
@@ -37,18 +38,63 @@ public class DBFiller implements ApplicationContextAware{
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		Fixy fixtures = new JpaFixyBuilder(entityManager).withDefaultPackage("h2_TestData").useFieldAccess().build();
-		
-       
+		       
 		addOceny(entityManager);		
 		addWykladowcy(entityManager);        
         addPrzedmioty(entityManager);        
         addWyklady(entityManager);
-        //addIndeks i studenty
+        addIndeksy(entityManager);
+        addStudenty(entityManager);
         addZaliczenia(entityManager);
         
 		transaction.commit();
 		entityManager.close();
 	}
+    private void addStudenty(EntityManager entityManager) {
+        boolean wieczny = true;
+        boolean niewieczny = false;
+        
+        addStudentForTest(entityManager, niewieczny, "Adam", "Abramek" , 1);
+        addStudentForTest(entityManager, niewieczny, "Adam", "Abramek1", 2);
+        addStudentForTest(entityManager, wieczny, "Bartek", "Bielecki" , 10);
+        addStudentForTest(entityManager, niewieczny, "Cezary", "Cap", 3);
+        addStudentForTest(entityManager, niewieczny, "Dariusz", "Dziewulski" , 9);
+        addStudentForTest(entityManager, wieczny, "Edward","Eklerek" , 4);
+        addStudentForTest(entityManager, wieczny, "Filip","Fiflak" , 11);
+        addStudentForTest(entityManager, niewieczny, "Grzegorz", "Grabowski" , 8);
+        addStudentForTest(entityManager, niewieczny, "Henryk", "Heller" , 5);
+        addStudentForTest(entityManager, niewieczny, "Ireneusz", "Ikarus" ,7);
+        addStudentForTest(entityManager, wieczny, "Jędrzej", "Jaworowski", 6);
+        addStudentForTest(entityManager, niewieczny, "Natan", "Nowak" ,12);
+    }
+    private void addStudentForTest(EntityManager entityManager,
+            boolean wieczny, String imie, String nazwisko, int indeksId) {
+        Student s1 = new Student();
+        s1.setImie(imie);
+        s1.setNazwisko(nazwisko);
+        s1.setIndeks(entityManager.find(Indeks.class, indeksId));
+        s1.setWieczny(wieczny);
+        entityManager.persist(s1);
+    }
+    private void addIndeksy(EntityManager entityManager) {
+        addIndeksForTest(entityManager, "000001");
+        addIndeksForTest(entityManager, "000002");
+        addIndeksForTest(entityManager, "000003");
+        addIndeksForTest(entityManager, "000004");
+        addIndeksForTest(entityManager, "000005");
+        addIndeksForTest(entityManager, "000006");
+        addIndeksForTest(entityManager, "000007");
+        addIndeksForTest(entityManager, "000008");
+        addIndeksForTest(entityManager, "000009");
+        addIndeksForTest(entityManager, "000010");
+        addIndeksForTest(entityManager, "000011");
+        addIndeksForTest(entityManager, "000012");
+    }
+    private void addIndeksForTest(EntityManager entityManager, String numer) {
+        Indeks i1 = new Indeks();
+        i1.setNumer(numer);
+        entityManager.persist(i1);
+    }
     private void addOceny(EntityManager entityManager) {
         addOcenaForTest(entityManager, "2.0");
         addOcenaForTest(entityManager, "2.5");
