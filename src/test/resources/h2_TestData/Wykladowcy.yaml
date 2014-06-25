@@ -3,26 +3,26 @@
 - !import h2_testData/Wyklady.yaml
 
 - Wykladowca(KRZ):
-    stopien: dr
-    imie: Jacek
-    nazwisko: Krzaczkowski
+    stopien: "dr"
+    imie: "Jacek"
+    nazwisko: "Krzaczkowski"
     
 - Wykladowca(KUD):
-    stopien: dr
-    imie: Rajmund
-    nazwisko: Kuduk
+    stopien: "dr"
+    imie: "Rajmund"
+    nazwisko: "Kuduk"
     
 - Wykladowca(MIK):
     stopien: "prof. dr hab"
-    imie: Paweł
-    nazwisko: Mikołajczak
+    imie: "Paweł"
+    nazwisko: "Mikołajczak"
     
 - Wykladowca(KAC):
     stopien: "dr hab."
-    imie: Wiesława
-    nazwisko: Kaczor
+    imie: "Wiesława"
+    nazwisko: "Kaczor"
     
 - Wykladowca(GOE):
     stopien: "prof. dr hab."
-    imie: Kazimierz
-    nazwisko: Goebel
+    imie: "Kazimierz"
+    nazwisko: "Goebel"
