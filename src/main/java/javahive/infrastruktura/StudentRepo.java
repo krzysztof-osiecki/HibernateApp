@@ -3,12 +3,6 @@ package javahive.infrastruktura;
 import java.util.ArrayList;
 import java.util.List;
 
-import javahive.domain.Student; //NOSONAR
-import javahive.domain.Zaliczenie; //NOSONAR
-import javahive.domain.Wyklad; //NOSONAR
-import javahive.domain.Indeks; //NOSONAR
-import javahive.domain.Ocena; //NOSONAR
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,6 +11,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Component;
+
+import javahive.domain.Student; 
+import javahive.domain.Zaliczenie;
+import javahive.domain.Wyklad; 
+import javahive.domain.Indeks; 
+import javahive.domain.Ocena; 
 
 @Component
 public class StudentRepo{

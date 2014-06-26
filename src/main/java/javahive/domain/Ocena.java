@@ -1,7 +1,5 @@
 package javahive.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 
 import javahive.infrastruktura.BaseEntity;
