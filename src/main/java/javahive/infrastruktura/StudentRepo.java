@@ -3,9 +3,7 @@ package javahive.infrastruktura;
 import java.util.ArrayList;
 import java.util.List;
 
-import javahive.api.dto.StudentDTO;
-import javahive.api.dto.WykladDTO;
-import javahive.domain.*;
+import javahive.domain.*; //NOSONAR
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
