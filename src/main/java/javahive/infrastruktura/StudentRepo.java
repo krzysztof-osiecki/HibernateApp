@@ -20,6 +20,8 @@ public class StudentRepo{
 	@PersistenceContext
 	private EntityManager entityManager;
 	private Query query;
+	private static final String NAME = "name";
+	private static final String LAST_NAME = "lastName";
 	
 	public StudentRepo(){}
 	
@@ -35,7 +37,7 @@ public class StudentRepo{
 	public List<Student> findStudentsWithName(String name) {
 		String queryString = "SELECT s FROM Student s WHERE s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("name", name); 
+		query.setParameter(NAME, name); 
 		return ((List<Student>) query.getResultList());
 	}
 	
@@ -43,7 +45,7 @@ public class StudentRepo{
 	public List<Student> findStudentsWithLastName(String lastName) {
 		String queryString = "SELECT s FROM Student s WHERE s.nazwisko = :lastName";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("lastName", lastName); 
+		query.setParameter(LAST_NAME, lastName); 
 		return ((List<Student>) query.getResultList());
 	}
 	
@@ -51,8 +53,8 @@ public class StudentRepo{
 	public List<Student> findStudentsWithFullName(String name, String lastName) {
 		String queryString = "SELECT s FROM Student s WHERE s.nazwisko = :lastName AND s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
-		query.setParameter("lastName", lastName); 
-		query.setParameter("name", name);
+		query.setParameter(LAST_NAME, lastName); 
+		query.setParameter(NAME, name);
 		return ((List<Student>) query.getResultList());
 	}
 	
@@ -69,8 +71,8 @@ public class StudentRepo{
 	    if(name==null){
 	        name="";
 	    }
-        query.setParameter("lastName", "%"+lastName+"%"); 
-        query.setParameter("name", "%"+name+"%");
+        query.setParameter(LAST_NAME, "%"+lastName+"%"); 
+        query.setParameter(NAME, "%"+name+"%");
         query.setParameter("indexNumber", "%"+indexNumber+"%");
         return ((List<Student>) query.getResultList());
 	}
@@ -95,8 +97,8 @@ public class StudentRepo{
 		String queryString = "UPDATE Student s SET s.imie = :name, s.nazwisko = :lastName"
 				+ " WHERE s.id = :id";
 		query = entityManager.createQuery(queryString);
-		query.setParameter("name", name);
-		query.setParameter("lastName", lastName);
+		query.setParameter(NAME, name);
+		query.setParameter(LAST_NAME, lastName);
 		query.setParameter("id", id);
 		query.executeUpdate();
 		return true;
