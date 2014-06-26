@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class StudentRepo{
 	
 	@PersistenceContext
-	public EntityManager entityManager;
+	private EntityManager entityManager;
 	private Query query;
 	
 	public StudentRepo(){}

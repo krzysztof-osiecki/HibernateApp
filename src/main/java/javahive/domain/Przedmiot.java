@@ -17,5 +17,5 @@ public class Przedmiot extends BaseEntity {
 	private String nazwa; //NOSONAR
 	
 	@OneToMany(mappedBy = "przedmiot")
-	private List<Wyklad> wyklady;
+	private List<Wyklad> wyklady; //NOSONAR
 }
