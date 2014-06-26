@@ -63,14 +63,14 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 	@Override
 	public List<Student> getStudenciPoNazwiskuJPQL(String nazwisko) {
 		 javax.persistence.Query query = entityManager.createQuery(QUERY_STUDENT_LASTNAME);
-		 query.setParameter("nazwisko", nazwisko.toLowerCase()); 
+		 query.setParameter(NAZWISKO, nazwisko.toLowerCase()); 
 		return castList(Student.class, query.getResultList());
 	}
 	
 	@Override
 	public List<Zaliczenie> getZaliczeniaDlaStudentaPoNazwiskuJPQL(String nazwisko){
         javax.persistence.Query query = entityManager.createQuery(this.QUERY_ZALICZENIA_DLA_STUDENTA_NAZWISKO);
-        query.setParameter("nazwisko", nazwisko.toLowerCase());
+        query.setParameter(NAZWISKO, nazwisko.toLowerCase());
 	    return castList(Zaliczenie.class, query.getResultList());
 	}
 
@@ -79,7 +79,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		Session session=entityManager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Student.class);
 		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-		criteria.add(Restrictions.eq("nazwisko",nazwisko));
+		criteria.add(Restrictions.eq(NAZWISKO,nazwisko));
 		for(Object o : criteria.list()){
 		    System.out.println("##"+((Student)o).getNazwisko()); //NOSONAR
 		}
@@ -108,7 +108,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 	@SuppressWarnings("unchecked") //NOSONAR
 	public List<Student> getStudenciJPQLPoFragmencieNazwiska(String fragmentNazwiska){
 		 javax.persistence.Query query = entityManager.createQuery(QUERY_STUDENT_LIKE_LASTNAME);
-		 query.setParameter("nazwisko", "%"+fragmentNazwiska.toLowerCase()+"%");	
+		 query.setParameter(NAZWISKO, "%"+fragmentNazwiska.toLowerCase()+"%");	
 		 return query.getResultList();
 	}
 
@@ -135,7 +135,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		ProjectionList proList = Projections.projectionList();
 		
         proList.add(Projections.property("imie"));
-        proList.add(Projections.property("nazwisko"));
+        proList.add(Projections.property(NAZWISKO));
         
         
         List<Object> listToParse = criteria.setProjection(proList).list();
@@ -162,7 +162,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
         
         proList.add(Projections.property("indeksId.numer"),"indeks");
         proList.add(Projections.property("imie"),"imie");
-        proList.add(Projections.property("nazwisko"),"nazwisko");
+        proList.add(Projections.property(NAZWISKO),NAZWISKO);
         proList.add(Projections.property("wieczny"),"wieczny");
         
         criteria.addOrder(Order.asc("indeksId.numer"));        
