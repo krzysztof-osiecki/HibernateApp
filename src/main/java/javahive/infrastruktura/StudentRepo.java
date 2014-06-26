@@ -63,15 +63,6 @@ public class StudentRepo{
 	    String queryString = "SELECT s FROM Student s WHERE s.nazwisko LIKE :lastName OR s.imie LIKE :name OR s.indeks.numer LIKE :indexNumber";
 	    
         query = (Query) entityManager.createQuery(queryString);
-	    if(indexNumber==null){
-	        indexNumber = new String();
-	    }
-	    if(lastName==null){
-	        lastName = new String();
-	    }
-	    if(name==null){
-	        name = new String();
-	    }
         query.setParameter(LAST_NAME, "%"+lastName+"%"); 
         query.setParameter(NAME, "%"+name+"%");
         query.setParameter("indexNumber", "%"+indexNumber+"%");
@@ -145,7 +136,7 @@ public class StudentRepo{
 	}
 	
     public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds) 
-    throws IllegalArgumentException{
+    throws IllegalArgumentException{ //NOSONAR
     	List<Student> lista = findStudentsWithFullName(imie, nazwisko);
     	if(lista.size() != 0 ) 
     	{
