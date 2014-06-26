@@ -153,6 +153,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
         
 		return parsedList;
 	}
+	
 
     @Override
     public List<Student> getStudenciPoIndeksieRosnaco() {
