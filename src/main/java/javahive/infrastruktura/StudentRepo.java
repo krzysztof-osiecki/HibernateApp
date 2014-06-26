@@ -22,6 +22,7 @@ public class StudentRepo{
 	private Query query;
 	private static final String NAME = "name";
 	private static final String LAST_NAME = "lastName";
+	private static final int DLUGOSC_INDEXU = 6;
 	
 	public StudentRepo(){}
 	
@@ -63,13 +64,13 @@ public class StudentRepo{
 	    
         query = (Query) entityManager.createQuery(queryString);
 	    if(indexNumber==null){
-	        indexNumber = "";
+	        indexNumber = new String();
 	    }
 	    if(lastName==null){
-	        lastName="";
+	        lastName = new String();
 	    }
 	    if(name==null){
-	        name="";
+	        name = new String();
 	    }
         query.setParameter(LAST_NAME, "%"+lastName+"%"); 
         query.setParameter(NAME, "%"+name+"%");
@@ -131,11 +132,11 @@ public class StudentRepo{
 	    int indexInt = Integer.parseInt(index);
 	    indexInt++;
 	    String result = String.valueOf(indexInt);
-	    if(result.length()>6){
+	    if(result.length()>DLUGOSC_INDEXU){
 	        return "000000";
 	    }
-	    else if(result.length()<6){
-	        for(int i = result.length(); i < 6; i++){
+	    else if(result.length()<DLUGOSC_INDEXU){
+	        for(int i = result.length(); i < DLUGOSC_INDEXU; i++){
 	            result = "0"+result;
 	        }
 	        return result;

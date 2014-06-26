@@ -177,7 +177,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
             s.setIndeks(i);
             s.setImie(r[1].toString());
             s.setNazwisko(r[2].toString());
-            if(r[3].toString().equals("true")){
+            if(r[3].toString().equals("true")){ //NOSONAR
                 s.setWieczny(true);
             }
             else {
