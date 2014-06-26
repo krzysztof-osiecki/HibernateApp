@@ -80,7 +80,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
 		criteria.add(Restrictions.eq("nazwisko",nazwisko));
 		for(Object o : criteria.list()){
-		    System.out.println("##"+((Student)o).getNazwisko());
+		    System.out.println("##"+((Student)o).getNazwisko()); //NOSONAR
 		}
 		
 		return castList(Student.class, criteria.list());
@@ -141,7 +141,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
         List<Student> parsedList = new LinkedList<Student>();
         for(Object o : listToParse){
             Object[] r = (Object[]) o;
-            System.out.println("**"+r[0]+" "+r[1]);
+            System.out.println("**"+r[0]+" "+r[1]); //NOSONAR
             Student s = new Student();
             s.setImie(r[0].toString());
             s.setNazwisko(r[1].toString());

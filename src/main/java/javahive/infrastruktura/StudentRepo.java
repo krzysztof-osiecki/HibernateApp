@@ -71,7 +71,6 @@ public class StudentRepo{
 	    if(name==null){
 	        name="";
 	    }
-	    System.out.println(indexNumber+" "+name+" "+lastName);
         query.setParameter("lastName", "%"+lastName+"%"); 
         query.setParameter("name", "%"+name+"%");
         query.setParameter("indexNumber", "%"+indexNumber+"%");
