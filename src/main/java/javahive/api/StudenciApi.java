@@ -31,7 +31,10 @@ public class StudenciApi {
     private StudentRepo studentRepo;
     private StudentDTOMementoCaretaker mementoCaretaker;
     public List<StudentDTO> getListaWszystkichStudentow() {
-    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+    	if(mementoCaretaker==null) 
+    	{
+    		mementoCaretaker = new StudentDTOMementoCaretaker();
+    	}
         List studentciDTO=new ArrayList<StudentDTO>();
         for(Student student: studentRepo.findAll(Student.class)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
@@ -67,7 +70,10 @@ public class StudenciApi {
     }
     
     public StudentDTO znajdzStudenta(String indexNumber) {
-    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+    	if(mementoCaretaker==null)
+    	{
+    		mementoCaretaker = new StudentDTOMementoCaretaker();
+    	}
     	Student student=studentRepo.findStudentWithIndexNumber(indexNumber);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
@@ -82,7 +88,10 @@ public class StudenciApi {
     
     public List<StudentDTO> znajdzStudentow(String imie, String nazwisko) {
         List studenciDTO=new ArrayList<StudentDTO>();
-    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+    	if(mementoCaretaker==null) 
+    	{
+    		mementoCaretaker = new StudentDTOMementoCaretaker();
+    	}
         for(Student student: studentRepo.findStudentsWithFullName(imie, nazwisko)) {
         	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
@@ -99,7 +108,10 @@ public class StudenciApi {
     
     public List<StudentDTO> znajdzStudentow(String param, int wariant) {
     	List studenciDTO=new ArrayList<StudentDTO>();
-    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+    	if(mementoCaretaker==null) 
+    	{
+    		mementoCaretaker = new StudentDTOMementoCaretaker();
+    	}
     	if(wariant==0)	//param==imie
     	{
             for(Student student: studentRepo.findStudentsWithName(param)) {
@@ -133,7 +145,10 @@ public class StudenciApi {
     
     public List<StudentDTO> znajdzStudentowPo(String index, String imie, String nazwisko){
         List studenciDTO=new ArrayList<StudentDTO>();
-        if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+        if(mementoCaretaker==null)
+        {
+        	mementoCaretaker = new StudentDTOMementoCaretaker();
+        }
         for(Student student: studentRepo.findStudentsBy(index,imie, nazwisko)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
@@ -175,7 +190,10 @@ public class StudenciApi {
    }
     
     public StudentDTO przywrocStudenta(int studentId) {
-    	if(mementoCaretaker==null) mementoCaretaker = new StudentDTOMementoCaretaker();
+    	if(mementoCaretaker==null) 
+    	{
+    		mementoCaretaker = new StudentDTOMementoCaretaker();
+    	}
         return new StudentDTO(mementoCaretaker.getMementoOfStudent(studentId));
     }
     

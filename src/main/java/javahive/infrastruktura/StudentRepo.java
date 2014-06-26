@@ -150,9 +150,9 @@ public class StudentRepo{
 	}
 	
     public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds) 
-    throws Exception{
+    throws IllegalArgumentException{
     	List<Student> lista = findStudentsWithFullName(imie, nazwisko);
-    	if(lista.size() != 0 ) throw new Exception("Student juz istnieje w bazie");
+    	if(lista.size() != 0 ) throw new IllegalArgumentException("Student juz istnieje w bazie");
         List<Zaliczenie> zaliczenia = new ArrayList<Zaliczenie>();
         for(int idWykladu: wykladIds){
             Zaliczenie zaliczenie = new Zaliczenie();
@@ -186,7 +186,7 @@ public class StudentRepo{
         }
         else
         {
-            throw new Exception("Zabraklo numerow idexu");
+            throw new IllegalArgumentException("Zabraklo numerow idexu");
         }
         
         entityManager.persist(indeks);         
