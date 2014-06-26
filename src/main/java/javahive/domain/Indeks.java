@@ -17,13 +17,14 @@ import javax.persistence.OneToOne;
 @ToString
 public class Indeks extends BaseEntity {
     public Indeks(){};
-    
+    @SuppressWarnings("unused")
     private String numer;
     
-    @OneToOne(mappedBy = "indeks")//, fetch=FetchType.EAGER)
-    //@JoinColumn(name="student_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "indeks")
+    @SuppressWarnings("unused")
     private Student student;
     
-    @OneToMany(mappedBy="indeks", fetch = FetchType.EAGER)    
+    @OneToMany(mappedBy="indeks", fetch = FetchType.EAGER) 
+    @SuppressWarnings("unused")
     private List<Zaliczenie> zaliczenia;
 }

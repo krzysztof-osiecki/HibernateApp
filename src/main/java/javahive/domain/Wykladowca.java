@@ -22,6 +22,7 @@ public class Wykladowca extends BaseEntity{
     @SuppressWarnings("unused")
     private String nazwisko;
     
+    @SuppressWarnings("unused")
     @OneToMany(mappedBy="wykladowca")
     private List<Wyklad> wyklady;
 }

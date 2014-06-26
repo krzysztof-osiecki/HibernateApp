@@ -1,14 +1,9 @@
 package javahive.domain;
 
-import java.util.List;
-
 import javahive.infrastruktura.BaseEntity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Getter;
@@ -20,7 +15,6 @@ import org.hibernate.annotations.FilterDefs;
 import org.hibernate.annotations.Filters;
 import org.hibernate.annotations.ParamDef;
 
-import com.google.common.collect.Lists;
 
 @Getter
 @Setter
