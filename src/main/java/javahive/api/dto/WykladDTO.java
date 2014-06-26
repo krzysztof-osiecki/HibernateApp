@@ -12,6 +12,7 @@ public class WykladDTO implements Serializable{
     private int id;
     private String wykladowca;
     private String przedmiot;
+    public WykladDTO(){};
     private WykladDTO(WykladDTOBuilder wykladDTOBuilder){
         this.id = wykladDTOBuilder.id;
     	this.wykladowca= wykladDTOBuilder.wykladowca;

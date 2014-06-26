@@ -17,6 +17,7 @@ import java.io.Serializable;
 public class OcenaDTO implements Serializable{
     private int id;
     private String wysokosc;
+    public OcenaDTO(){};
     private OcenaDTO(OcenaDTOBuilder ocenaDTOBuilder) {
         this.wysokosc = ocenaDTOBuilder.wysokosc;
         this.id = ocenaDTOBuilder.id;

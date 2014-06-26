@@ -15,6 +15,7 @@ public class ZaliczenieDTO implements Serializable{
     private String ocena;
     private String przedmiot;
     private String wykladowca;
+    public ZaliczenieDTO(){};
     private ZaliczenieDTO(ZaliczenieDTOBuilder zaliczenieDTOBuilder) {
         this.id = zaliczenieDTOBuilder.id;
     	this.ocena = zaliczenieDTOBuilder.ocena;
