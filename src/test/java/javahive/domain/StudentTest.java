@@ -82,8 +82,8 @@ public class StudentTest {
     @Test
     public void sprawdzLiczStudPoNazwiskuJPQLvsHQL(){
     	//given
-	    	List<Student> listaStudentowHQL  = repozytoriumStudentImpl.getStudenciPoNazwisku_HQL(NAZWISKO);
-	    	List<Student> listaStudentowJPQL = repozytoriumStudentImpl.getStudenciPoNazwisku_JPQL(NAZWISKO);
+	    	List<Student> listaStudentowHQL  = repozytoriumStudentImpl.getStudenciPoNazwiskuHQL(NAZWISKO);
+	    	List<Student> listaStudentowJPQL = repozytoriumStudentImpl.getStudenciPoNazwiskuJPQL(NAZWISKO);
 	   	//when
 	    	int iloscStudHQL = listaStudentowHQL.size();
 	    	int iloscStudJPQL= listaStudentowJPQL.size();
@@ -95,8 +95,8 @@ public class StudentTest {
     @Test
     public void sprawdzLiczbeStudentowPoNazwiskuJPQLvsCRITERIA(){
         //given
-            List<Student> listaStudentowCriteria  = repozytoriumStudentImpl.getStudenciPoNazwisku_CRITERIA(NAZWISKO);
-            List<Student> listaStudentowJPQL = repozytoriumStudentImpl.getStudenciPoNazwisku_JPQL(NAZWISKO);
+            List<Student> listaStudentowCriteria  = repozytoriumStudentImpl.getStudenciPoNazwiskuCRITERIA(NAZWISKO);
+            List<Student> listaStudentowJPQL = repozytoriumStudentImpl.getStudenciPoNazwiskuJPQL(NAZWISKO);
         //when
             int iloscStudCriteria = listaStudentowCriteria.size();
             int iloscStudJPQL= listaStudentowJPQL.size();
@@ -108,8 +108,8 @@ public class StudentTest {
     @Test
     public void sprawdzLiczbeStudentowPoNazwiskuCRITERIAvsHQL(){
     	//given
-            List<Student> listaStudentowCriteria  = repozytoriumStudentImpl.getStudenciPoNazwisku_CRITERIA(NAZWISKO);
-            List<Student> listaStudentowHQL  = repozytoriumStudentImpl.getStudenciPoNazwisku_HQL(NAZWISKO);
+            List<Student> listaStudentowCriteria  = repozytoriumStudentImpl.getStudenciPoNazwiskuCRITERIA(NAZWISKO);
+            List<Student> listaStudentowHQL  = repozytoriumStudentImpl.getStudenciPoNazwiskuHQL(NAZWISKO);
     	//when
             int iloscStudCriteria = listaStudentowCriteria.size();
             int iloscStudHQL = listaStudentowHQL.size();
@@ -196,7 +196,7 @@ public class StudentTest {
         //assertThat(s.getIndeks().getZaliczenia().size(), is(4));
         //System.out.println(s.getOceny());
         //given
-            List<Zaliczenie> zaliczeniaStudenta = repozytoriumStudentImpl.getZaliczeniaDlaStudentaPoNazwisku_JPQL("Abramek");
+            List<Zaliczenie> zaliczeniaStudenta = repozytoriumStudentImpl.getZaliczeniaDlaStudentaPoNazwiskuJPQL("Abramek");
         //when
             int liczbaZaliczen = zaliczeniaStudenta.size();
         //then

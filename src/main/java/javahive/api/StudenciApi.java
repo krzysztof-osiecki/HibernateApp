@@ -35,7 +35,7 @@ public class StudenciApi {
     	{
     		mementoCaretaker = new StudentDTOMementoCaretaker();
     	}
-        List studentciDTO=new ArrayList<StudentDTO>();
+        List<StudentDTO> studentciDTO=new ArrayList<StudentDTO>();
         for(Student student: studentRepo.findAll(Student.class)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
@@ -52,7 +52,7 @@ public class StudenciApi {
     
     //Dodatkowa funkcjonalnosc
     public List<WykladDTO> getListaWszystkichWykladow() {
-        List wykladyDTO=new ArrayList<WykladDTO>();
+        List<WykladDTO> wykladyDTO=new ArrayList<WykladDTO>();
         for(Wyklad wyklad: studentRepo.findAll(Wyklad.class)) {
             WykladDTO wykladDTO= new WykladDTO.WykladDTOBuilder()
             .id(wyklad.getId())
@@ -87,7 +87,7 @@ public class StudenciApi {
     }
     
     public List<StudentDTO> znajdzStudentow(String imie, String nazwisko) {
-        List studenciDTO=new ArrayList<StudentDTO>();
+        List<StudentDTO> studenciDTO=new ArrayList<StudentDTO>();
     	if(mementoCaretaker==null) 
     	{
     		mementoCaretaker = new StudentDTOMementoCaretaker();
@@ -107,7 +107,7 @@ public class StudenciApi {
     }
     
     public List<StudentDTO> znajdzStudentow(String param, int wariant) {
-    	List studenciDTO=new ArrayList<StudentDTO>();
+    	List<StudentDTO> studenciDTO=new ArrayList<StudentDTO>();
     	if(mementoCaretaker==null)
     	{
     		mementoCaretaker = new StudentDTOMementoCaretaker();
@@ -144,7 +144,7 @@ public class StudenciApi {
     }
     
     public List<StudentDTO> znajdzStudentowPo(String index, String imie, String nazwisko){
-        List studenciDTO=new ArrayList<StudentDTO>();
+        List<StudentDTO> studenciDTO=new ArrayList<StudentDTO>();
         if(mementoCaretaker==null) 
         {
         	mementoCaretaker = new StudentDTOMementoCaretaker();
@@ -168,7 +168,7 @@ public class StudenciApi {
     }
     
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
-        List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
+        List<ZaliczenieDTO> zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
         for(Zaliczenie zaliczenie: studentRepo.findCreditsOfStudent(studentId)) {
         	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
         	.id(zaliczenie.getId())

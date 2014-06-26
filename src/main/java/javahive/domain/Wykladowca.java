@@ -15,9 +15,11 @@ import lombok.*;
 @Entity
 public class Wykladowca extends BaseEntity{
     public Wykladowca(){};
-    
+    @SuppressWarnings("unused")
     private String stopien;
+    @SuppressWarnings("unused")
     private String imie;
+    @SuppressWarnings("unused")
     private String nazwisko;
     
     @OneToMany(mappedBy="wykladowca")

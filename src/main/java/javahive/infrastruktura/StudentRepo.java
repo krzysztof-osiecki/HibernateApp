@@ -3,8 +3,6 @@ package javahive.infrastruktura;
 import java.util.ArrayList;
 import java.util.List;
 
-import javahive.api.dto.StudentDTO;
-import javahive.api.dto.WykladDTO;
 import javahive.domain.Indeks;
 import javahive.domain.Ocena;
 import javahive.domain.Wyklad;
@@ -62,6 +60,7 @@ public class StudentRepo{
 		return ((List<Student>) query.getResultList());
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Student> findStudentsBy(String indexNumber, String name, String lastName){
 	    String queryString = "SELECT s FROM Student s WHERE s.nazwisko LIKE :lastName OR s.imie LIKE :name OR s.indeks.numer LIKE :indexNumber";
 	    
