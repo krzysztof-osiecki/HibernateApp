@@ -112,7 +112,7 @@ public class StudenciApi {
     	{
     		mementoCaretaker = new StudentDTOMementoCaretaker();
     	}
-    	if(wariant==0)	//param==imie
+    	if(wariant==0)
     	{
             for(Student student: studentRepo.findStudentsWithName(param)) {
             	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
@@ -126,7 +126,7 @@ public class StudenciApi {
                 mementoCaretaker.setMemento(studentDTO.createMemento());
             }
     	}
-    	else	//param==nazwisko
+    	else
     	{
             for(Student student: studentRepo.findStudentsWithLastName(param)) {
             	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()

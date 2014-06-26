@@ -10,7 +10,7 @@ import javahive.domain.Wyklad;
 @Getter
 @Setter
 
-public final class ZaliczenieDTO implements Serializable{
+public class ZaliczenieDTO implements Serializable{
     private int id;
     private String ocena;
     private String przedmiot;

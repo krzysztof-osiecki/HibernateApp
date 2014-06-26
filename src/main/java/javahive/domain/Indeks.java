@@ -24,8 +24,7 @@ public class Indeks extends BaseEntity {
     
     private String numer; //NOSONAR
     
-    @OneToOne(mappedBy = "indeks")//, fetch=FetchType.EAGER)
-    //@JoinColumn(name="student_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "indeks")
     private Student student; //NOSONAR
     
     @OneToMany(mappedBy="indeks", fetch = FetchType.EAGER)    

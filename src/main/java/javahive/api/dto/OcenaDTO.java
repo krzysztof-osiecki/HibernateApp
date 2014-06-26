@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter
 @ToString
 
-public final class OcenaDTO implements Serializable{
+public class OcenaDTO implements Serializable{
     private int id;
     private String wysokosc;
     private OcenaDTO(OcenaDTOBuilder ocenaDTOBuilder) {

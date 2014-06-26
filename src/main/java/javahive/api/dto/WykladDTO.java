@@ -8,7 +8,7 @@ import javahive.domain.Wykladowca;
 @ToString
 @Getter
 @Setter
-public final class WykladDTO implements Serializable{
+public class WykladDTO implements Serializable{
     private int id;
     private String wykladowca;
     private String przedmiot;

@@ -56,7 +56,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
         org.hibernate.Query query = session.createQuery(QUERY_STUDENT_LASTNAME);
         query.setParameter("nazwisko", nazwisko.toLowerCase());
         
-        return castList(Student.class, query.list()); //session close?
+        return castList(Student.class, query.list());
     }
 
 	@Override
