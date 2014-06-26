@@ -21,12 +21,5 @@ public class Ocena extends BaseEntity {
 	public Ocena(){};
 	
 	private String wysokosc;
-	
-	//@ManyToOne(optional = true)
-	//@JoinColumn(name="student_id")
-	//private Student student;
-	
-	//@OneToMany(mappedBy="ocena")
-	//@JoinColumn(name="zaliczenie_id",referencedColumnName = "id")
-	//private List<Zaliczenie> zaliczenia;
+
 }

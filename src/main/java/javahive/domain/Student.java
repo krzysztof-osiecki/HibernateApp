@@ -47,12 +47,8 @@ public class Student extends BaseEntity {
 	private String imie;
 	private String nazwisko;
 	private boolean wieczny;
-	//TODO:Tam gdzie mappedBy to import w yamlu
-	//@OneToMany(mappedBy="student",fetch=FetchType.EAGER)
-    //@OneToMany
-	//private List<Ocena> oceny=Lists.newArrayList();
 	
-    @OneToOne//(mappedBy="student",fetch=FetchType.EAGER)
+    @OneToOne
     @JoinColumn(name = "indeks_id",referencedColumnName="id")
     private Indeks indeks;
     private Student(StudentBuilder studentBuilder) {

@@ -78,9 +78,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		Session session=entityManager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Student.class);
 		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-		criteria.add(Restrictions.eq("nazwisko",nazwisko));//.toLowerCase()));
-		//criteria.setProjection(Projections.distinct(Projections.property("id")));
-		//return session.createCriteria(nu).uniqueResult();
+		criteria.add(Restrictions.eq("nazwisko",nazwisko));
 		for(Object o : criteria.list()){
 		    System.out.println("##"+((Student)o).getNazwisko());
 		}
@@ -121,8 +119,6 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		Filter filter = session.enableFilter("FILTER_TEST_STUDENT_ID");
 		filter.setParameter("PARAM_student_ID",  minID);
 		
-		/*Filter filter = session.enableFilter("studentFilter");
-    	filter.setParameter("studentFilterID", minID);*/
 		
 		org.hibernate.Query query = session.createQuery(QUERY_STUDENT);
 		
@@ -140,7 +136,6 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
         proList.add(Projections.property("imie"));
         proList.add(Projections.property("nazwisko"));
         
-        //Po kiego grzyba takie projekcje?!
         
         List<Object> listToParse = criteria.setProjection(proList).list();
         List<Student> parsedList = new LinkedList<Student>();
