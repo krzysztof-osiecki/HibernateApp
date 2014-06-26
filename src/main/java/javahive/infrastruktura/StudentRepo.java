@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 public class StudentRepo{
 	
 	@PersistenceContext
-	public EntityManager entityManager;
+	private EntityManager entityManager;
 	private Query query;
 	
 	public StudentRepo(){}
@@ -34,8 +34,7 @@ public class StudentRepo{
 		CriteriaQuery<T> criteria = builder.createQuery(c);
 		Root<T> entityRoot = criteria.from(c);
 		criteria.select(entityRoot);
-		List<T> entities = entityManager.createQuery( criteria ).getResultList();
-		return entities;
+		return entityManager.createQuery( criteria ).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -152,7 +151,10 @@ public class StudentRepo{
     public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds) 
     throws Exception{
     	List<Student> lista = findStudentsWithFullName(imie, nazwisko);
-    	if(lista.size() != 0 ) throw new Exception("Student juz istnieje w bazie");
+    	if(lista.size() != 0 ) 
+    	{
+    		throw new Exception("Student juz istnieje w bazie");
+    	}
         List<Zaliczenie> zaliczenia = new ArrayList<Zaliczenie>();
         for(int idWykladu: wykladIds){
             Zaliczenie zaliczenie = new Zaliczenie();
