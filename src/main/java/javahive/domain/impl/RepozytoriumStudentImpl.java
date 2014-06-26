@@ -37,6 +37,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 	                                                                        "WHERE LOWER(s.nazwisko) = :nazwisko"; 
 	
 	private static final String QUERY_STUDENT = "FROM Student";
+	private static final String NAZWISKO = "nazwisko";
 	
     @PersistenceContext
     private EntityManager entityManager;
@@ -91,7 +92,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
         return null;
     }
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	@Override
 	public List<Student> getStudenciZFiltorwanymNazwiskiem(String fragmentNazwiska) {
 		Session session=entityManager.unwrap(Session.class);
@@ -104,14 +105,14 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		return query.list();
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	public List<Student> getStudenciJPQLPoFragmencieNazwiska(String fragmentNazwiska){
 		 javax.persistence.Query query = entityManager.createQuery(QUERY_STUDENT_LIKE_LASTNAME);
 		 query.setParameter("nazwisko", "%"+fragmentNazwiska.toLowerCase()+"%");	
 		 return query.getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	@Override
 	public List<Student> getStudenciZIDWiekszymNizDolnaWartosc(int minID) {
 		Session session=entityManager.unwrap(Session.class);
@@ -125,7 +126,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
 		return query.list();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	@Override
 	public List<Student> getProjekcjaStudentowPoImieNazwisko() {
 		Session session=entityManager.unwrap(Session.class);

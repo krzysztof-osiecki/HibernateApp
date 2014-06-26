@@ -33,7 +33,7 @@ public class StudentRepo{
 		return entityManager.createQuery( criteria ).getResultList();
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	public List<Student> findStudentsWithName(String name) {
 		String queryString = "SELECT s FROM Student s WHERE s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
@@ -41,7 +41,7 @@ public class StudentRepo{
 		return ((List<Student>) query.getResultList());
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	public List<Student> findStudentsWithLastName(String lastName) {
 		String queryString = "SELECT s FROM Student s WHERE s.nazwisko = :lastName";
 		query = (Query) entityManager.createQuery(queryString);
@@ -49,7 +49,7 @@ public class StudentRepo{
 		return ((List<Student>) query.getResultList());
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	public List<Student> findStudentsWithFullName(String name, String lastName) {
 		String queryString = "SELECT s FROM Student s WHERE s.nazwisko = :lastName AND s.imie = :name";
 		query = (Query) entityManager.createQuery(queryString);
@@ -116,7 +116,7 @@ public class StudentRepo{
 	}
 	
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //NOSONAR
 	public List<Zaliczenie> findCreditsOfStudent(int id) {
 	    String queryString = "SELECT z FROM Zaliczenie z INNER JOIN z.indeks i INNER JOIN i.student s " +
                 "WHERE s.id = :id";
