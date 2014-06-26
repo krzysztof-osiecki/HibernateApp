@@ -34,8 +34,7 @@ public class StudentRepo{
 		CriteriaQuery<T> criteria = builder.createQuery(c);
 		Root<T> entityRoot = criteria.from(c);
 		criteria.select(entityRoot);
-		List<T> entities = entityManager.createQuery( criteria ).getResultList();
-		return entities;
+		return entityManager.createQuery( criteria ).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
