@@ -18,8 +18,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Ocena extends BaseEntity {
-	public Ocena(){};
-	
-	private String wysokosc; //NOSONAR
+ public Ocena(){};
+ 
+ private String wysokosc; //NOSONAR
 
 }

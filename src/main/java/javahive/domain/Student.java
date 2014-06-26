@@ -28,80 +28,80 @@ import com.google.common.collect.Lists;
 
 //Definicja ustala na jakich atrybutach/polach encji filtr ma działać
 @FilterDefs({
-	@FilterDef(	name="FILTER_TEST_STUDENT_NAZWISKO", 
-				parameters=@ParamDef( name="PARAM_student_Nazwisko", type="string" ) ),
-	@FilterDef(	name="FILTER_TEST_STUDENT_ID", 
-				parameters=@ParamDef( name="PARAM_student_ID", type="int" ) )
+ @FilterDef( name="FILTER_TEST_STUDENT_NAZWISKO", 
+    parameters=@ParamDef( name="PARAM_student_Nazwisko", type="string" ) ),
+ @FilterDef( name="FILTER_TEST_STUDENT_ID", 
+    parameters=@ParamDef( name="PARAM_student_ID", type="int" ) )
 })
 
 // Fitlry określają jaki ma zostać spełniony warunek na zadanych w definicji parametrach
 @Filters({
-	@Filter(name = "FILTER_TEST_STUDENT_NAZWISKO", condition = "lower(nazwisko) like :PARAM_student_Nazwisko"),
-	@Filter(name = "FILTER_TEST_STUDENT_ID", condition = "id > :PARAM_student_ID")
+ @Filter(name = "FILTER_TEST_STUDENT_NAZWISKO", condition = "lower(nazwisko) like :PARAM_student_Nazwisko"),
+ @Filter(name = "FILTER_TEST_STUDENT_ID", condition = "id > :PARAM_student_ID")
 })
 
 
 public class Student extends BaseEntity {
-	public Student(){};
+ public Student(){};
 
-	private String imie;
-	private String nazwisko;
-	private boolean wieczny;
-	
+ private String imie;
+ private String nazwisko;
+ private boolean wieczny;
+ 
     @OneToOne
     @JoinColumn(name = "indeks_id",referencedColumnName="id")
     private Indeks indeks;
     private Student(StudentBuilder studentBuilder) {
-    	this.imie = studentBuilder.imie;
-    	this.nazwisko = studentBuilder.nazwisko;
-    	this.indeks = studentBuilder.indeks;
-    	this.wieczny = studentBuilder.wieczny;
+     this.imie = studentBuilder.imie;
+     this.nazwisko = studentBuilder.nazwisko;
+     this.indeks = studentBuilder.indeks;
+     this.wieczny = studentBuilder.wieczny;
     }
     
     
     public static class StudentBuilder {
-    	private String imie;
-    	private String nazwisko;
+     private String imie;
+     private String nazwisko;
         private Indeks indeks;
-    	private boolean wieczny;
-    	
-    	public StudentBuilder() {
-    	}
-    	
-    	public StudentBuilder imie(String imie) {
-    		this.imie = imie;
-    		return this;
-    	}
-    	
-    	public StudentBuilder nazwisko(String nazwisko) {
-    		this.nazwisko = nazwisko;
-    		return this;
-    	}
-    	
-    	public StudentBuilder indeks(Indeks  indeks) {
-    		this.indeks = indeks;
-    		return this;
-    	}
-    	
-    	public StudentBuilder wieczny(boolean wieczny) {
-    		this.wieczny = wieczny;
-    		return this;
-    	}
-    	
-    	public Student buduj() {
-    		return new Student(this);
-    	}
-    	
+     private boolean wieczny;
+     
+     public StudentBuilder() {
+     }
+     
+     public StudentBuilder imie(String imie) {
+      this.imie = imie;
+      return this;
+     }
+     
+     public StudentBuilder nazwisko(String nazwisko) {
+      this.nazwisko = nazwisko;
+      return this;
+     }
+     
+     public StudentBuilder indeks(Indeks  indeks) {
+      this.indeks = indeks;
+      return this;
+     }
+     
+     public StudentBuilder wieczny(boolean wieczny) {
+      this.wieczny = wieczny;
+      return this;
+     }
+     
+     public Student buduj() {
+      return new Student(this);
+     }
+     
     }
     
     public static class StudentMemento {
-    	private String imie;
-    	private String nazwisko;
+     private String imie;
+     private String nazwisko;
         private Indeks indeks;
-    	private boolean wieczny;
-    	public void zapamietaj(){
-    		
-    	}
+     private boolean wieczny;
+     public void zapamietaj(){
+      
+     }
     }
 }
 /*

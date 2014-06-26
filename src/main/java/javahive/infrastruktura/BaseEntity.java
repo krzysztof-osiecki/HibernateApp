@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 public class BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private int id; //NOSONAR
+ @Id
+ @GeneratedValue(strategy = GenerationType.IDENTITY) 
+ private int id; //NOSONAR
 }
