@@ -31,10 +31,10 @@ public class StudenciApi {
     private StudentRepo studentRepo;
     private StudentDTOMementoCaretaker mementoCaretaker;
     public List<StudentDTO> getListaWszystkichStudentow() {
-    	if(mementoCaretaker==null) 
-    	{
-    		mementoCaretaker = new StudentDTOMementoCaretaker();
-    	}
+     if(mementoCaretaker==null) 
+     {
+      mementoCaretaker = new StudentDTOMementoCaretaker();
+     }
         List studentciDTO=new ArrayList<StudentDTO>();
         for(Student student: studentRepo.findAll(Student.class)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
@@ -70,11 +70,11 @@ public class StudenciApi {
     }
     
     public StudentDTO znajdzStudenta(String indexNumber) {
-    	if(mementoCaretaker==null)
-    	{
-    		mementoCaretaker = new StudentDTOMementoCaretaker();
-    	}
-    	Student student=studentRepo.findStudentWithIndexNumber(indexNumber);
+     if(mementoCaretaker==null)
+     {
+      mementoCaretaker = new StudentDTOMementoCaretaker();
+     }
+     Student student=studentRepo.findStudentWithIndexNumber(indexNumber);
         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
         .imie(student.getImie())
         .nazwisko(student.getNazwisko())
@@ -88,34 +88,34 @@ public class StudenciApi {
     
     public List<StudentDTO> znajdzStudentow(String imie, String nazwisko) {
         List studenciDTO=new ArrayList<StudentDTO>();
-    	if(mementoCaretaker==null) 
-    	{
-    		mementoCaretaker = new StudentDTOMementoCaretaker();
-    	}
+     if(mementoCaretaker==null) 
+     {
+      mementoCaretaker = new StudentDTOMementoCaretaker();
+     }
         for(Student student: studentRepo.findStudentsWithFullName(imie, nazwisko)) {
-        	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+         StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
             .imie(student.getImie())
             .nazwisko(student.getNazwisko())
             .wieczny(student.isWieczny())
             .indeks(student.getIndeks())
             .id(student.getId())
             .buduj();
-        	mementoCaretaker.setMemento(studentDTO.createMemento());
+         mementoCaretaker.setMemento(studentDTO.createMemento());
             studenciDTO.add(studentDTO);
         }
         return studenciDTO;
     }
     
     public List<StudentDTO> znajdzStudentow(String param, int wariant) {
-    	List studenciDTO=new ArrayList<StudentDTO>();
-    	if(mementoCaretaker==null) 
-    	{
-    		mementoCaretaker = new StudentDTOMementoCaretaker();
-    	}
-    	if(wariant==0)
-    	{
+     List studenciDTO=new ArrayList<StudentDTO>();
+     if(mementoCaretaker==null) 
+     {
+      mementoCaretaker = new StudentDTOMementoCaretaker();
+     }
+     if(wariant==0)
+     {
             for(Student student: studentRepo.findStudentsWithName(param)) {
-            	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
                 .imie(student.getImie())
                 .nazwisko(student.getNazwisko())
                 .wieczny(student.isWieczny())
@@ -125,11 +125,11 @@ public class StudenciApi {
                 studenciDTO.add(studentDTO);
                 mementoCaretaker.setMemento(studentDTO.createMemento());
             }
-    	}
-    	else
-    	{
+     }
+     else
+     {
             for(Student student: studentRepo.findStudentsWithLastName(param)) {
-            	StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
+             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
                 .imie(student.getImie())
                 .nazwisko(student.getNazwisko())
                 .wieczny(student.isWieczny())
@@ -139,15 +139,15 @@ public class StudenciApi {
                 studenciDTO.add(studentDTO);
                 mementoCaretaker.setMemento(studentDTO.createMemento());
             }
-    	}
-    	return  studenciDTO;
+     }
+     return  studenciDTO;
     }
     
     public List<StudentDTO> znajdzStudentowPo(String index, String imie, String nazwisko){
         List studenciDTO=new ArrayList<StudentDTO>();
         if(mementoCaretaker==null)
         {
-        	mementoCaretaker = new StudentDTOMementoCaretaker();
+         mementoCaretaker = new StudentDTOMementoCaretaker();
         }
         for(Student student: studentRepo.findStudentsBy(index,imie, nazwisko)) {
             StudentDTO studentDTO= new StudentDTO.StudentDTOBuilder()
@@ -170,10 +170,10 @@ public class StudenciApi {
     public List<ZaliczenieDTO> pobierzZaliczenia(int studentId) {
         List zaliczeniaDTO=new ArrayList<ZaliczenieDTO>();
         for(Zaliczenie zaliczenie: studentRepo.findCreditsOfStudent(studentId)) {
-        	ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
-        	.id(zaliczenie.getId())
-        	.ocena(zaliczenie.getOcena())
-        	.wyklad(zaliczenie.getWyklad())
+         ZaliczenieDTO zaliczenieDTO = new ZaliczenieDTO.ZaliczenieDTOBuilder()
+         .id(zaliczenie.getId())
+         .ocena(zaliczenie.getOcena())
+         .wyklad(zaliczenie.getWyklad())
             .buduj();
             zaliczeniaDTO.add(zaliczenieDTO);
         }
@@ -186,14 +186,14 @@ public class StudenciApi {
     
    public boolean wystawOcene(int idZaliczenia, int ocenaId)
    {
-	   return studentRepo.setCreditGrade(idZaliczenia, ocenaId);
+    return studentRepo.setCreditGrade(idZaliczenia, ocenaId);
    }
     
     public StudentDTO przywrocStudenta(int studentId) {
-    	if(mementoCaretaker==null) 
-    	{
-    		mementoCaretaker = new StudentDTOMementoCaretaker();
-    	}
+     if(mementoCaretaker==null) 
+     {
+      mementoCaretaker = new StudentDTOMementoCaretaker();
+     }
         return new StudentDTO(mementoCaretaker.getMementoOfStudent(studentId));
     }
     
@@ -212,12 +212,12 @@ public class StudenciApi {
     public boolean utworzStudenta(String imie, String nazwisko, int[] wykladIds){
         try
         {
-        	return studentRepo.utworzStudenta(imie, nazwisko, wykladIds);
+         return studentRepo.utworzStudenta(imie, nazwisko, wykladIds);
         }
         catch(Exception e)
         {
-        	//Gdybysmy mieli log, to tutaj logowalibysmy informacje z wyjatku
-        	return false;
+         //Gdybysmy mieli log, to tutaj logowalibysmy informacje z wyjatku
+         return false;
         }
     }
     
