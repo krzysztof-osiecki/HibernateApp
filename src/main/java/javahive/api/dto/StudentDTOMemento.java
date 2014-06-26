@@ -17,11 +17,11 @@ import javahive.domain.Indeks;
 @ToString
 
 public class StudentDTOMemento implements Serializable{
-    private String imie;
-    private String nazwisko;
-    private boolean wieczny;
-    private String numerIndeksu;
-    private int id;
+    private String imie;	//NOSONAR
+    private String nazwisko;	//NOSONAR
+    private boolean wieczny;	//NOSONAR
+    private String numerIndeksu;	//NOSONAR
+    private int id;		//NOSONAR	
     public StudentDTOMemento(StudentDTO studentDTO) {
     	this.imie = studentDTO.getImie();
     	this.nazwisko = studentDTO.getNazwisko();
