@@ -3,7 +3,11 @@ package javahive.infrastruktura;
 import java.util.ArrayList;
 import java.util.List;
 
-import javahive.domain.*; //NOSONAR
+import javahive.domain.Student; //NOSONAR
+import javahive.domain.Zaliczenie; //NOSONAR
+import javahive.domain.Wyklad; //NOSONAR
+import javahive.domain.Indeks; //NOSONAR
+import javahive.domain.Ocena; //NOSONAR
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
