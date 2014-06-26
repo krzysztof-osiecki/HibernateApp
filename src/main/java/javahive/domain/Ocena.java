@@ -20,6 +20,6 @@ import lombok.Setter;
 public class Ocena extends BaseEntity {
 	public Ocena(){};
 	
-	private String wysokosc;
+	private String wysokosc; //NOSONAR
 
 }

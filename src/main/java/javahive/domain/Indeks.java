@@ -22,12 +22,12 @@ import javax.persistence.OneToOne;
 public class Indeks extends BaseEntity {
     public Indeks(){};
     
-    private String numer;
+    private String numer; //NOSONAR
     
     @OneToOne(mappedBy = "indeks")//, fetch=FetchType.EAGER)
     //@JoinColumn(name="student_id", referencedColumnName = "id")
-    private Student student;
+    private Student student; //NOSONAR
     
     @OneToMany(mappedBy="indeks", fetch = FetchType.EAGER)    
-    private List<Zaliczenie> zaliczenia;
+    private List<Zaliczenie> zaliczenia; //NOSONAR
 }

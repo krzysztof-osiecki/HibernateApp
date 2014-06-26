@@ -16,12 +16,12 @@ public class Wyklad extends BaseEntity {
     
     @ManyToOne
     @JoinColumn(name="wykladowca_id", referencedColumnName="id")
-    private Wykladowca wykladowca;
+    private Wykladowca wykladowca; //NOSONAR
     
     @ManyToOne
     @JoinColumn(name="przedmiot_id", referencedColumnName="id")
-    private Przedmiot przedmiot;  
+    private Przedmiot przedmiot; //NOSONAR
     
     @OneToMany(mappedBy="wyklad")
-    private List<Zaliczenie> zaliczenia;
+    private List<Zaliczenie> zaliczenia; //NOSONAR
 }

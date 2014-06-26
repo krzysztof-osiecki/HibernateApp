@@ -14,13 +14,13 @@ public class Zaliczenie extends BaseEntity{
     
     @ManyToOne(optional=true)
     @JoinColumn(name="indeks_id")
-    private Indeks indeks;
+    private Indeks indeks; //NOSONAR
     
     @ManyToOne
     @JoinColumn(name="wyklad_id",referencedColumnName="id")
-    private Wyklad wyklad;
+    private Wyklad wyklad; //NOSONAR
     
     @ManyToOne(optional=true)
     @JoinColumn(name="ocena_id")
-    private Ocena ocena;
+    private Ocena ocena; //NOSONAR
 }

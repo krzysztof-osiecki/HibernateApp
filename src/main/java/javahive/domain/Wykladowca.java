@@ -16,10 +16,10 @@ import lombok.*;
 public class Wykladowca extends BaseEntity{
     public Wykladowca(){};
     
-    private String stopien;
-    private String imie;
-    private String nazwisko;
+    private String stopien; //NOSONAR
+    private String imie; //NOSONAR
+    private String nazwisko; //NOSONAR
     
     @OneToMany(mappedBy="wykladowca")
-    private List<Wyklad> wyklady;
+    private List<Wyklad> wyklady; //NOSONAR
 }

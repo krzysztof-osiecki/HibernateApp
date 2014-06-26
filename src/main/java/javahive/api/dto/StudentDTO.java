@@ -20,7 +20,7 @@ public class StudentDTO implements Serializable{
     private String imie;
     private String nazwisko;
     private boolean wieczny;
-    private String numerIndeksu;
+    private String numerIndeksu; //NOSONAR
     private int id;
     private StudentDTO(StudentDTOBuilder studentDTOBuilder) {
     	this.imie = studentDTOBuilder.imie;

@@ -14,7 +14,7 @@ import lombok.*;
 public class Przedmiot extends BaseEntity {
     public Przedmiot(){};
     
-	private String nazwa;
+	private String nazwa; //NOSONAR
 	
 	@OneToMany(mappedBy = "przedmiot")
 	private List<Wyklad> wyklady;
