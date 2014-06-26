@@ -8,11 +8,8 @@ import javahive.infrastruktura.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 

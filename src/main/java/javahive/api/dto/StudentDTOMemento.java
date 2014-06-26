@@ -6,7 +6,6 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
-import javahive.domain.Indeks;
 
 /**
  * Created by m on 29.04.14.

@@ -14,7 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.hibernate.criterion.CriteriaSpecification;
