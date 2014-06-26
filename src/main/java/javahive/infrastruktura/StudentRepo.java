@@ -5,11 +5,7 @@ import java.util.List;
 
 import javahive.api.dto.StudentDTO;
 import javahive.api.dto.WykladDTO;
-import javahive.domain.Indeks;
-import javahive.domain.Ocena;
-import javahive.domain.Wyklad;
-import javahive.domain.Student;
-import javahive.domain.Zaliczenie;
+import javahive.domain.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
