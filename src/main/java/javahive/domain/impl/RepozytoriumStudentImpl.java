@@ -51,7 +51,7 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
     }
     
     @Override
-    public List<Student> getStudenciPoNazwisku_HQL(String nazwisko) {
+    public List<Student> getStudenciPoNazwiskuHQL(String nazwisko) {
         Session session=entityManager.unwrap(Session.class);
         org.hibernate.Query query = session.createQuery(QUERY_STUDENT_LASTNAME);
         query.setParameter("nazwisko", nazwisko.toLowerCase());
@@ -60,21 +60,21 @@ public class RepozytoriumStudentImpl implements RepozytoriumStudent {
     }
 
 	@Override
-	public List<Student> getStudenciPoNazwisku_JPQL(String nazwisko) {
+	public List<Student> getStudenciPoNazwiskuJPQL(String nazwisko) {
 		 javax.persistence.Query query = entityManager.createQuery(QUERY_STUDENT_LASTNAME);
 		 query.setParameter("nazwisko", nazwisko.toLowerCase()); 
 		return castList(Student.class, query.getResultList());
 	}
 	
 	@Override
-	public List<Zaliczenie> getZaliczeniaDlaStudentaPoNazwisku_JPQL(String nazwisko){
+	public List<Zaliczenie> getZaliczeniaDlaStudentaPoNazwiskuJPQL(String nazwisko){
         javax.persistence.Query query = entityManager.createQuery(this.QUERY_ZALICZENIA_DLA_STUDENTA_NAZWISKO);
         query.setParameter("nazwisko", nazwisko.toLowerCase());
 	    return castList(Zaliczenie.class, query.getResultList());
 	}
 
 	@Override
-	public List<Student> getStudenciPoNazwisku_CRITERIA(String nazwisko) {
+	public List<Student> getStudenciPoNazwiskuCRITERIA(String nazwisko) {
 		Session session=entityManager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Student.class);
 		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
